@@ -1,6 +1,6 @@
 # jsdoc
 [![Build Status](https://secure.travis-ci.org/zxqfox/jscs-jsdoc.svg?branch=master)](http://travis-ci.org/zxqfox/jscs-jsdoc)
-[![NPM version](https://badge.fury.io/js/jsdoc-jscs.png)](http://badge.fury.io/js/jsdoc-jscs)
+[![NPM version](https://badge.fury.io/js/jscs-jsdoc.png)](http://badge.fury.io/js/jscs-jsdoc)
 [![Dependency Status](https://david-dm.org/zxqfox/jscs-jsdoc.png)](https://david-dm.org/zxqfox/jscs-jsdoc)
 
 `jscs-jsdoc` plugin for [jscs](https://github.com/mdevils/node-jscs/).
