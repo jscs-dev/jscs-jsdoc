@@ -99,6 +99,8 @@ add: function() {
 
 ## Browser Usage
 
+NOT SUPPORTED ATM. SORRY.
+
 File [jscs-jsdoc-browser.js](jscs-jsdoc-browser.js) contains browser-compatible version of `jscs-jsdoc`.
 
 Download and include `jscs-jsdoc-browser.js` into your page just after `jscs-browser.js`.
