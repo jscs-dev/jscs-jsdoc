@@ -1,0 +1,12 @@
+{
+    "node"     : true,
+    "bitwise"  : true,
+    "undef"    : true,
+    "eqeqeq"   : true,
+    "forin"    : true,
+    "immed"    : true,
+    "noarg"    : true,
+    "unused"   : true,
+    "maxlen"   : 120,
+    "predef"   : ["describe", "it", "beforeEach", "afterEach"]
+}
