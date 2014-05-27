@@ -7,7 +7,7 @@ describe('rules/validate-jsdoc', function () {
     beforeEach(function () {
         checker = new Checker();
         checker.registerDefaultRules();
-        checker.configure({ additionalRules: ["lib/rules/validate-jsdoc.js"] });
+        checker.configure({ additionalRules: ['lib/rules/validate-jsdoc.js'] });
     });
 
     describe('common', function () {
