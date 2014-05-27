@@ -298,6 +298,56 @@ describe('rules/validate-jsdoc', function () {
             );
         });
 
+        it('should not report on `@returns {string|null}` vs (null). issue #8', function () {
+            checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
+            assert(
+                checker.checkString(
+                    '/**\n' +
+                    ' * @return {string|null}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (!this.something) {\n' +
+                    '    return null;\n' +
+                    '  }\n' +
+                    '}\n' +
+                    '/**\n' +
+                    ' * @return {?string}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (!this.something) {\n' +
+                    '    return null;\n' +
+                    '  }\n' +
+                    '}\n'
+                ).isEmpty()
+            );
+        });
+
+        it('should not report on `@returns {?number}` vs (null|number). issue #8', function () {
+            checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
+            assert(
+                checker.checkString(
+                    '/**\n' +
+                    ' * @return {number|null}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (!this.something) {\n' +
+                    '    return null;\n' +
+                    '  }\n' +
+                    '  return 3;\n' +
+                    '}\n' +
+                    '/**\n' +
+                    ' * @return {?number}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (!this.something) {\n' +
+                    '    return null;\n' +
+                    '  }\n' +
+                    '  return 3;\n' +
+                    '}\n'
+                ).isEmpty()
+            );
+        });
+
     });
 
 });
