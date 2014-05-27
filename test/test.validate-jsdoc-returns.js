@@ -229,4 +229,75 @@ describe('rules/validate-jsdoc', function () {
 
     });
 
+    describe('bugfixes', function () {
+
+        it('should not throw exception on `@returns {null|undefined}` directive. issue #7', function () {
+
+            checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
+            assert(
+                checker.checkString(
+                    '/**\n' +
+                    ' * @return {null}\n' +
+                    ' */\n' +
+                    'function funcName() {\n' +
+                        'return null;\n' +
+                    '}\n' +
+                    '/**\n' +
+                    ' * @return {undefined}\n' +
+                    ' */\n' +
+                    'function funcName() {\n' +
+                        'return undefined;\n' +
+                    '}\n' +
+                    '/**\n' +
+                    ' * @return {null|undefined}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (flag) {\n' +
+                    '    return null;\n' +
+                    '  }\n' +
+                    '  return undefined;\n' +
+                    '}\n'
+                ).isEmpty()
+            );
+
+        });
+
+        it('should report on `@returns {null|undefined}` vs (string|number|regexp). issue #7', function () {
+            checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
+            assert(
+                checker.checkString(
+                    '/**\n' +
+                    ' * @return {null|undefined}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (flag) {\n' +
+                    '    return /qwe/i;\n' +
+                    '  } else {\n' +
+                    '    return 2;\n' +
+                    '  }\n' +
+                    '  return "";\n' +
+                    '}\n'
+                ).getErrorCount() === 3
+            );
+        });
+
+        it('should report on `@returns {null|undefined}` vs (array|object). issue #7', function () {
+            checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
+            assert(
+                checker.checkString(
+                    '/**\n' +
+                    ' * @return {null|undefined}\n' +
+                    ' */\n' +
+                    'function funcName(flag) {\n' +
+                    '  if (flag) {\n' +
+                    '    return [];\n' +
+                    '  }\n' +
+                    '  return {q: 1};\n' +
+                    '}\n'
+                ).getErrorCount() === 2
+            );
+        });
+
+    });
+
 });
