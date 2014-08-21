@@ -1,7 +1,7 @@
 var Checker = require('jscs/lib/checker');
 var assert = require('assert');
 
-describe('rules/validate-jsdoc', function () {
+describe('rules/validate-jsdoc @param', function () {
 
     var checker;
     beforeEach(function () {
@@ -18,7 +18,7 @@ describe('rules/validate-jsdoc', function () {
                 checker.checkString(
                     'var x = 1;\n' +
                     '/**\n' +
-                    ' * @param' +
+                    ' * @param\n' +
                     ' */\n' +
                     'function funcName(xxx) {\n' +
                         '\n' +
