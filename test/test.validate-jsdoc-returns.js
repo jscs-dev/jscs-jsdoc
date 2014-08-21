@@ -1,7 +1,7 @@
 var Checker = require('jscs/lib/checker');
 var assert = require('assert');
 
-describe('rules/validate-jsdoc', function () {
+describe('rules/validate-jsdoc @returns', function () {
 
     var checker;
     beforeEach(function () {
@@ -12,13 +12,13 @@ describe('rules/validate-jsdoc', function () {
 
     describe('require-return-types', function () {
 
-        it('should report invalid @returns jsdoc', function () {
+        it('should report invalid @returns', function () {
             checker.configure({ jsDoc: { requireReturnTypes: true } });
             assert(
                 checker.checkString(
                     'var x = 1;\n' +
                     '/**\n' +
-                    ' * @return' +
+                    ' * @return\n' +
                     ' */\n' +
                     'function funcName() {\n' +
                         '\n' +
@@ -52,21 +52,21 @@ describe('rules/validate-jsdoc', function () {
             assert(
                 checker.checkString(
                     '/**\n' +
-                    ' * @return {string}' +
+                    ' * @return {string}\n' +
                     ' */\n' +
                     'function funcName() {\n' +
                         '\n' +
                     '}\n' +
 
                     '/**\n' +
-                    ' * @returns {String}' +
+                    ' * @returns {String}\n' +
                     ' */\n' +
                     'function funcName() {\n' +
                         'var x = function () { return 1; }\n' +
                     '}\n' +
 
                     '/**\n' +
-                    ' * @returns {String}' +
+                    ' * @returns {String}\n' +
                     ' */\n' +
                     'function funcName() {\n' +
                         'return;\n' +
@@ -80,7 +80,7 @@ describe('rules/validate-jsdoc', function () {
             assert(
                 checker.checkString(
                     '/**\n' +
-                    ' * @returns {String}' +
+                    ' * @returns {String}\n' +
                     ' */\n' +
                     'function funcName() {\n' +
                         'var x = function () { return 1; }\n' +

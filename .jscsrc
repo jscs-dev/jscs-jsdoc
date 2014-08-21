@@ -1,5 +1,18 @@
 {
     "preset": "google",
+    "fileExtensions": "jscs",
 
-    "disallowSpacesInFunctionExpression": null
+    "requireParenthesesAroundIIFE": true,
+    "maximumLineLength": 120,
+    "validateLineBreaks": "LF",
+    "validateIndentation": 4,
+
+    "disallowKeywords": ["with"],
+    "disallowSpacesInsideObjectBrackets": null,
+    "disallowSpacesInFunctionExpression": null,
+    "disallowImplicitTypeConversion": ["string"],
+
+    "excludeFiles": [
+      "test/data/**"
+    ]
 }
