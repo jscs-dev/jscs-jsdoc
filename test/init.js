@@ -1,7 +1,10 @@
+var Checker = require('jscs/lib/checker');
 var parse = require('comment-parser');
+var expect = require('chai').expect;
 
 global.parse = parse;
 global.fnBody = fnBody;
+global.checker = rulesChecker;
 
 function fnBody(func) {
     var str = func.toString();
@@ -27,4 +30,47 @@ function fnBody(func) {
     }).join('\n');
 
     return out;
+}
+
+function rulesChecker(opts) {
+    var checker;
+
+    beforeEach(function () {
+        checker = new Checker();
+        checker.registerDefaultRules();
+        if (opts) {
+            checker.configure(opts);
+        }
+    });
+
+    return {
+        cases: function (items) {
+            items = items || [];
+            items.forEach(function (test) {
+
+                (test.skip? it.skip : it)(test.it, function () {
+                    if (test.rules) {
+                        checker.configure({ jsDoc: test.rules });
+                    }
+
+                    var body = test.code.call ? fnBody(test.code) : test.code;
+                    var checked = checker.checkString(body);
+                    var errors = checked.getErrorList();
+                    if (errors.length && errors[0].rule === 'parseError') {
+                        console.error(errors[0]);
+                        throw new Error(errors[0].message);
+                    }
+
+                    if (!test.hasOwnProperty('errors') || (typeof test.errors === 'number')) {
+                        expect(checked.getErrorCount())
+                            .to.eq(test.errors || 0);
+                    } else {
+                        expect(errors)
+                            .to.deep.equal(test.errors);
+                    }
+                });
+
+            });
+        }
+    };
 }

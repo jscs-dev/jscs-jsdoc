@@ -51,6 +51,10 @@ Values:
  - "requireReturnTypes" ensures returns in jsdoc contains type
  - "checkRedundantReturns" reports redundant returns in jsdoc
  - "checkTypes" reports invalid types in jsdoc
+ - "enforce" reports empty and jsdoc
+ - "strict" reports for invalid jsdoc definitions
+ - "leadingUnderscoreAccess" reports not set @access for `_underscored` function names
+ - "trailingUnderscoreAccess" reports not set @access for `underscored`_ function names
 
 #### Example
 
@@ -62,7 +66,10 @@ Values:
     "checkReturnTypes": true,
     "checkRedundantReturns": true,
     "requireReturnTypes": true,
-    "checkTypes": true
+    "checkTypes": true,
+    "strict": true,
+    "enforce": true,
+    "leadingUnderscoreAccess": 'private'
 }
 ```
 
@@ -72,12 +79,13 @@ Values:
 /**
  * Adds style error to the list
  *
+ * @private
  * @param {String} message
  * @param {Number|Object} line
  * @param {Number} [column]
  * @returns {String[]}
  */
-add: function(message, line, column) {
+_add: function(message, line, column) {
     return ['foo', 'bar'];
 }
 ```
@@ -88,12 +96,13 @@ add: function(message, line, column) {
 /**
  * Adds style error to the list
  *
+ * @protected
  * @param {String} message
  * @param {Number,Object} line
  * @param {Number} [column]
  * @returns {String}
  */
-add: function() {
+_add: function() {
 }
 ```
 
