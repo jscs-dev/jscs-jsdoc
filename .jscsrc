@@ -12,6 +12,7 @@
     "disallowImplicitTypeConversion": ["string"],
 
     "excludeFiles": [
-      "test/data/**"
+      "test/data/**",
+      "test/lib/rules/**"
     ]
 }

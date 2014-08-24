@@ -1,6 +1,7 @@
 var Checker = require('jscs/lib/checker');
 var parse = require('comment-parser');
-var expect = require('chai').expect;
+var chai = require('chai');
+var expect = chai.expect;
 
 global.parse = parse;
 global.fnBody = fnBody;
@@ -69,9 +70,14 @@ function rulesChecker(opts) {
                     if (!test.hasOwnProperty('errors') || (typeof test.errors === 'number')) {
                         expect(checked.getErrorCount())
                             .to.eq(test.errors || 0);
-                    } else {
+                    } else if (Array.isArray(test.errors)) {
                         expect(errors)
                             .to.deep.equal(test.errors);
+                    } else {
+                        expect(checked.getErrorCount())
+                            .to.not.eq(0);
+                        expect(errors[0])
+                            .to.deep.similar(test.errors);
                     }
                 });
 
@@ -79,3 +85,19 @@ function rulesChecker(opts) {
         }
     };
 }
+
+chai.use(function (chai, utils) {
+    utils.addMethod(chai.Assertion.prototype, 'similar', method);
+
+    function method(expected) {
+        var obj = utils.flag(this, 'object');
+
+        Object.keys(obj).forEach(function (k) {
+            if (!expected.hasOwnProperty(k)) {
+                expected[k] = obj[k];
+            }
+        });
+
+        new chai.Assertion(obj).to.be.deep.equal(expected);
+    }
+});
