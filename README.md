@@ -1,9 +1,9 @@
-# jsdoc
+# jscs-jsdoc
 [![Build Status](https://secure.travis-ci.org/zxqfox/jscs-jsdoc.svg?branch=master)](http://travis-ci.org/zxqfox/jscs-jsdoc)
 [![NPM version](https://badge.fury.io/js/jscs-jsdoc.png)](http://badge.fury.io/js/jscs-jsdoc)
 [![Dependency Status](https://david-dm.org/zxqfox/jscs-jsdoc.png)](https://david-dm.org/zxqfox/jscs-jsdoc)
 
-`jscs-jsdoc` plugin for [jscs](https://github.com/mdevils/node-jscs/).
+`jsdoc` plugin for [jscs](https://github.com/mdevils/node-jscs/).
 
 ## Friendly packages
 
@@ -16,7 +16,7 @@ Install it globally if you are using globally installed `jscs`
 
     npm -g install jscs-jsdoc
 
-Or install it into your project
+But better install it into your project
 
     npm install jscs-jsdoc --save-dev
 
@@ -49,12 +49,11 @@ Values:
  - "checkRedundantParams" reports redundant params in jsdoc
  - "checkReturnTypes" tries to compare function result type with declared type in jsdoc
  - "requireReturnTypes" ensures returns in jsdoc contains type
+ - "checkTypes" reports invalid types
  - "checkRedundantReturns" reports redundant returns in jsdoc
- - "checkTypes" reports invalid types in jsdoc
- - "enforce" reports empty and jsdoc
- - "strict" reports for invalid jsdoc definitions
- - "leadingUnderscoreAccess" reports not set @access for `_underscored` function names
- - "trailingUnderscoreAccess" reports not set @access for `underscored`_ function names
+ - "checkRedundantAccess" reports redundant access declarations
+ - "leadingUnderscoreAccess" ensures access declaration is set for `_underscored` function names
+ - "enforceExistence" ensures jsdoc declarations exists for functions and methods
 
 #### Example
 
@@ -64,12 +63,12 @@ Values:
     "checkRedundantParams": true,
     "requireParamTypes": true,
     "checkReturnTypes": true,
-    "checkRedundantReturns": true,
     "requireReturnTypes": true,
     "checkTypes": true,
-    "strict": true,
-    "enforce": true,
-    "leadingUnderscoreAccess": 'private'
+    "checkRedundantReturns": true,
+    "checkRedundantAccess": true,
+    "leadingUnderscoreAccess": "private",
+    "enforceExistence": true
 }
 ```
 
@@ -103,6 +102,10 @@ _add: function(message, line, column) {
  * @returns {String}
  */
 _add: function() {
+    if (true) {
+        return false;
+    }
+    return 15;
 }
 ```
 
@@ -120,9 +123,9 @@ Download and include `jscs-jsdoc-browser.js` into your page just after `jscs-bro
 <script>
     var checker = new JscsStringChecker();
     checker.registerDefaultRules();
-    checker.configure({'jsDoc': {/*...*/}});
+    checker.configure({'jsDoc': {/* ... */}});
     var errors = checker.checkString('var x, y = 1;');
-    errors.getErrorList().forEach(function(error) {
+    errors.getErrorList().forEach(function (error) {
         console.log(errors.explainError(error));
     });
 </script>

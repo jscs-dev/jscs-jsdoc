@@ -44,6 +44,11 @@ function rulesChecker(opts) {
     });
 
     return {
+        rules: function (rules) {
+            beforeEach(function () {
+                checker.configure({jsDoc: rules});
+            });
+        },
         cases: function (items) {
             items = items || [];
             items.forEach(function (test) {
