@@ -1,6 +1,5 @@
 {
     "preset": "google",
-    "fileExtensions": "jscs",
 
     "requireParenthesesAroundIIFE": true,
     "maximumLineLength": 120,

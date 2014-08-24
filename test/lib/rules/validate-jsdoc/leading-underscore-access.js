@@ -70,7 +70,7 @@ describe('rules/validate-jsdoc', function () {
                      */
                     function _funcName(p) {}
                 },
-                errors: [{ line: 6, column: 0, message: "Method access doesn't match", rule: "jsDoc" }]
+                errors: [{ line: 6, column: 0, message: 'Method access doesn\'t match', rule: 'jsDoc' }]
             }, {
                 it: 'should skip anonymous',
                 rules: {leadingUnderscoreAccess: true},

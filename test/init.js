@@ -53,7 +53,7 @@ function rulesChecker(opts) {
             items = items || [];
             items.forEach(function (test) {
 
-                (test.skip? it.skip : it)(test.it, function () {
+                (test.skip ? it.skip : it)(test.it, function () {
                     if (test.rules) {
                         checker.configure({ jsDoc: test.rules });
                     }
