@@ -1,6 +1,5 @@
 {
     "preset": "google",
-    "fileExtensions": "jscs",
 
     "requireParenthesesAroundIIFE": true,
     "maximumLineLength": 120,
@@ -13,6 +12,7 @@
     "disallowImplicitTypeConversion": ["string"],
 
     "excludeFiles": [
-      "test/data/**"
+      "test/data/**",
+      "test/lib/rules/**"
     ]
 }
