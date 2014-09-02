@@ -4,14 +4,14 @@
   "description": "JSCS jsdoc plugin",
   "version": "0.0.9",
   "main": "lib/index",
-  "homepage": "https://github.com/zxqfox/jscs-jsdoc",
+  "homepage": "https://github.com/jscs-dev/jscs-jsdoc",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zxqfox/jscs-jsdoc"
+    "url": "https://github.com/jscs-dev/jscs-jsdoc"
   },
   "bugs": {
-    "url": "https://github.com/zxqfox/jscs-jsdoc/issues"
+    "url": "https://github.com/jscs-dev/jscs-jsdoc/issues"
   },
   "contributors": [
     "Alexej Yaroshevich <alex@qfox.ru>"
@@ -46,7 +46,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/zxqfox/jscs-jsdoc/raw/master/LICENSE"
+      "url": "http://github.com/jscs-dev/jscs-jsdoc/raw/master/LICENSE"
     }
   ]
 }
