@@ -1,18 +1,18 @@
 var Checker = require('jscs/lib/checker');
 var assert = require('assert');
 
-describe('rules/validate-jsdoc @returns', function () {
+describe('rules/validate-jsdoc @returns', function() {
 
     var checker;
-    beforeEach(function () {
+    beforeEach(function() {
         checker = new Checker();
         checker.registerDefaultRules();
         checker.configure({ additionalRules: ['lib/rules/validate-jsdoc.js'] });
     });
 
-    describe('require-return-types', function () {
+    describe('require-return-types', function() {
 
-        it('should report invalid @returns', function () {
+        it('should report invalid @returns', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -27,7 +27,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report valid jsdoc with object type in method', function () {
+        it('should not report valid jsdoc with object type in method', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -45,9 +45,9 @@ describe('rules/validate-jsdoc @returns', function () {
 
     });
 
-    describe('redudant-returns', function () {
+    describe('redudant-returns', function() {
 
-        it('should report redundant @returns for function', function () {
+        it('should report redundant @returns for function', function() {
             checker.configure({ jsDoc: { checkRedundantReturns: true } });
             assert(
                 checker.checkString(
@@ -75,7 +75,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report redundant @returns for function', function () {
+        it('should not report redundant @returns for function', function() {
             checker.configure({ jsDoc: { checkRedundantReturns: true } });
             assert(
                 checker.checkString(
@@ -92,9 +92,9 @@ describe('rules/validate-jsdoc @returns', function () {
 
     });
 
-    describe('check-return-types', function () {
+    describe('check-return-types', function() {
 
-        it('should report invalid @returns type in function', function () {
+        it('should report invalid @returns type in function', function() {
             checker.configure({ jsDoc: { checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -108,7 +108,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report valid resulting type with object type in method', function () {
+        it('should not report valid resulting type with object type in method', function() {
             checker.configure({ jsDoc: { checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -123,7 +123,7 @@ describe('rules/validate-jsdoc @returns', function () {
                 ).isEmpty()
             );
         });
-        it('should not report valid resulting type with object type in function', function () {
+        it('should not report valid resulting type with object type in function', function() {
             checker.configure({ jsDoc: { checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -137,7 +137,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report comparition jsdoc type to any expression in function', function () {
+        it('should not report comparition jsdoc type to any expression in function', function() {
             checker.configure({ jsDoc: { checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -157,7 +157,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report valid resulting array type for function', function () {
+        it('should not report valid resulting array type for function', function() {
             checker.configure({ jsDoc: { checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -177,7 +177,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report valid resulting regexp type for function', function () {
+        it('should not report valid resulting regexp type for function', function() {
             checker.configure({ jsDoc: { checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -199,9 +199,9 @@ describe('rules/validate-jsdoc @returns', function () {
 
     });
 
-    describe('combined', function () {
+    describe('combined', function() {
 
-        it('should not report valid resulting array.<String> and Object[] for function', function () {
+        it('should not report valid resulting array.<String> and Object[] for function', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -229,9 +229,9 @@ describe('rules/validate-jsdoc @returns', function () {
 
     });
 
-    describe('bugfixes', function () {
+    describe('bugfixes', function() {
 
-        it('should not throw exception on `@returns {null|undefined}` directive. issue #7', function () {
+        it('should not throw exception on `@returns {null|undefined}` directive. issue #7', function() {
 
             checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
             assert(
@@ -262,7 +262,7 @@ describe('rules/validate-jsdoc @returns', function () {
 
         });
 
-        it('should report on `@returns {null|undefined}` vs (string|number|regexp). issue #7', function () {
+        it('should report on `@returns {null|undefined}` vs (string|number|regexp). issue #7', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -281,7 +281,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should report on `@returns {null|undefined}` vs (array|object). issue #7', function () {
+        it('should report on `@returns {null|undefined}` vs (array|object). issue #7', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -298,7 +298,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report on `@returns {string|null}` vs (null). issue #8', function () {
+        it('should not report on `@returns {string|null}` vs (null). issue #8', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
             assert(
                 checker.checkString(
@@ -322,7 +322,7 @@ describe('rules/validate-jsdoc @returns', function () {
             );
         });
 
-        it('should not report on `@returns {?number}` vs (null|number). issue #8', function () {
+        it('should not report on `@returns {?number}` vs (null|number). issue #8', function() {
             checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
             assert(
                 checker.checkString(

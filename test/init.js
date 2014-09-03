@@ -19,14 +19,14 @@ function fnBody(func) {
 
     // strip preceding indentation
     var blockIndent = 0;
-    out.match(/^([ \t]*)/gm).map(function (v) {
+    out.match(/^([ \t]*)/gm).map(function(v) {
         if (!blockIndent || (v.length > 0 && v.length < blockIndent)) {
             blockIndent = v.length;
         }
     });
 
     // rebuild block without inner indent
-    out = !blockIndent ? out : out.split('\n').map(function (v) {
+    out = !blockIndent ? out : out.split('\n').map(function(v) {
         return v.substr(blockIndent);
     }).join('\n');
 
@@ -36,7 +36,7 @@ function fnBody(func) {
 function rulesChecker(opts) {
     var checker;
 
-    beforeEach(function () {
+    beforeEach(function() {
         checker = new Checker();
         checker.registerDefaultRules();
         if (opts) {
@@ -45,16 +45,16 @@ function rulesChecker(opts) {
     });
 
     return {
-        rules: function (rules) {
-            beforeEach(function () {
+        rules: function(rules) {
+            beforeEach(function() {
                 checker.configure({jsDoc: rules});
             });
         },
-        cases: function (items) {
+        cases: function(items) {
             items = items || [];
-            items.forEach(function (test) {
+            items.forEach(function(test) {
 
-                (test.skip ? it.skip : it)(test.it, function () {
+                (test.skip ? it.skip : it)(test.it, function() {
                     if (test.rules) {
                         checker.configure({ jsDoc: test.rules });
                     }
@@ -86,13 +86,13 @@ function rulesChecker(opts) {
     };
 }
 
-chai.use(function (chai, utils) {
+chai.use(function(chai, utils) {
     utils.addMethod(chai.Assertion.prototype, 'similar', method);
 
     function method(expected) {
         var obj = utils.flag(this, 'object');
 
-        Object.keys(obj).forEach(function (k) {
+        Object.keys(obj).forEach(function(k) {
             if (!expected.hasOwnProperty(k)) {
                 expected[k] = obj[k];
             }

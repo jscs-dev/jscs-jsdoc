@@ -1,5 +1,6 @@
 {
     "preset": "google",
+    "fileExtensions": [ ".js", "jscs" ],
 
     "requireParenthesesAroundIIFE": true,
     "maximumLineLength": 120,
@@ -8,8 +9,9 @@
 
     "disallowKeywords": ["with"],
     "disallowSpacesInsideObjectBrackets": null,
-    "disallowSpacesInFunctionExpression": null,
     "disallowImplicitTypeConversion": ["string"],
+
+    "safeContextKeyword": "_this",
 
     "excludeFiles": [
       "test/data/**",
