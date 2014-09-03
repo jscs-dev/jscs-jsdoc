@@ -1,10 +1,10 @@
 var expect = require('chai').expect;
 var fnBody = global.fnBody;
 
-describe('test', function () {
-    describe('fnBody', function () {
-        it('should not fail', function () {
-            expect(fnBody(function () {
+describe('test', function() {
+    describe('fnBody', function() {
+        it('should not fail', function() {
+            expect(fnBody(function() {
                 /**
                  * yolo
                  */
