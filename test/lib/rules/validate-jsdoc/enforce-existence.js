@@ -36,6 +36,12 @@ describe('rules/validate-jsdoc', function () {
                     function funcName(p) {
                     }
                 }
+            }, {
+                it: 'should not report jsdoc absence for anonymous functions',
+                code: function () {
+                    [].forEach(function (v) {
+                    });
+                }
             }
             /* jshint ignore:end */
         ]);
