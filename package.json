@@ -20,7 +20,7 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "comment-parser": "zxqfox/comment-parser#jscs-jsdoc",
+    "comment-parser": "0.2.0",
     "doctrine": "^0.5.2"
   },
   "devDependencies": {
