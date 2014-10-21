@@ -37,7 +37,7 @@
   "scripts": {
     "lint": "jshint . && jscs lib test",
     "test": "npm run lint && mocha",
-    "browserify": "browserify --standalone JscsPluginJsdoc lib/index.js -o jscs-jsdoc-browser.js"
+    "browserify": "browserify --standalone JsdocJscsPlugin lib/index.js -o jscs-jsdoc-browser.js"
   },
   "files": [
     "lib",
