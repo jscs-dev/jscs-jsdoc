@@ -348,6 +348,37 @@ describe('rules/validate-jsdoc @returns', function() {
             );
         });
 
+        it('should not report on `@returns {foo.Bar}`. issue #16', function() {
+            checker.configure({ jsDoc: { requireReturnTypes: true, checkReturnTypes: true } });
+            assert(
+                checker.checkString(
+                    'module.exports = {\n' +
+                    '    /**\n' +
+                    '     * @return {foo.Bar}\n' +
+                    '     */\n' +
+                    '    foo: function () {\n' +
+                    '        return new foo.Bar();\n' +
+                    '    },\n' +
+                    '    /**\n' +
+                    '     * @return {foo.Bar.Baz}\n' +
+                    '     */\n' +
+                    '    bar: function () {\n' +
+                    '        return new foo.Bar.Baz();\n' +
+                    '    },\n' +
+                    '    /**\n' +
+                    '     * @return {foo.Bar.Baz|foo.Bar.Baz.Moo}\n' +
+                    '     */\n' +
+                    '    baz: function (t) {\n' +
+                    '        if (t) {\n' +
+                    '            return new foo.Bar.Baz.Moo();\n' +
+                    '        }\n' +
+                    '        return new foo.Bar.Baz();\n' +
+                    '    }\n' +
+                    '};\n'
+                ).isEmpty()
+            );
+        });
+
     });
 
 });
