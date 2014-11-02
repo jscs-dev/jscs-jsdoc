@@ -37,10 +37,70 @@ describe('rules/validate-jsdoc', function () {
                     }
                 }
             }, {
+                it: 'should report jsdoc absence for function expressions',
+                errors: 1,
+                code: function () {
+                    var myFunc = function (v) {
+                    };
+                }
+            }, {
                 it: 'should not report jsdoc absence for anonymous functions',
                 code: function () {
                     [].forEach(function (v) {
                     });
+                }
+            }, {
+                it: 'should report nested jsdoc absence',
+                errors: 4,
+                code: function () {
+                    var MyNamespace = MyNamespace || {};
+
+                    MyNamespace.Test = function () {
+                    };
+
+                    MyNamespace.Test.Sub = {
+                        yellow: function () {
+                        }
+                    };
+
+                    (function () {
+                        MyNamespace.Test.prototype.foo = function() {
+                            function bar() {
+                            }
+                        };
+                    })();
+                }
+            }, {
+                it: 'shouldn\'t report nested jsdocs existence',
+                code: function () {
+                    var MyNamespace = MyNamespace || {};
+
+                    /**
+                     * Test
+                     */
+                    MyNamespace.Test = function () {
+                    };
+
+                    MyNamespace.Test.Sub = {
+                        /**
+                         * yellow submarine
+                         */
+                        yellow: function () {
+                        }
+                    };
+
+                    (function () {
+                        /**
+                         * Test.foo
+                         */
+                        MyNamespace.Test.prototype.foo = function() {
+                            /**
+                             * bar
+                             */
+                            function bar() {
+                            }
+                        };
+                    })();
                 }
             }
             /* jshint ignore:end */
