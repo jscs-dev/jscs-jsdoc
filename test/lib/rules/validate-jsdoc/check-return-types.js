@@ -245,6 +245,17 @@ describe('rules/validate-jsdoc', function () {
                         }
                     };
                 }
+            }, {
+                it: 'should not report on `@returns {Class}` for {}. issue #32',
+                code: function () {
+                    /**
+                     * @return {Class}
+                     */
+                    Users.prototype.getState = function()
+                    {
+                        return {};
+                    };
+                }
             }
             /* jshint ignore:end */
         ]);
