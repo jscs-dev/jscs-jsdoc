@@ -3,7 +3,7 @@ describe('rules/validate-jsdoc', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('check-redudant-returns', function() {
+    describe('check-redundant-returns', function() {
 
         checker.rules({checkRedundantReturns: true});
         checker.cases([
@@ -42,6 +42,19 @@ describe('rules/validate-jsdoc', function () {
                     function funcName() {
                         var x = function () { return 1; }
                         if (true) { return x; }
+                    }
+                }
+            }, {
+                it: 'should not report expression return for inner call result',
+                code: function () {
+                    /**
+                     * @function
+                     * @return {Promise} a promise
+                     */
+                    function onEvent () {
+                        return this.login().then(function () {
+                            // do some else
+                        });
                     }
                 }
             }
