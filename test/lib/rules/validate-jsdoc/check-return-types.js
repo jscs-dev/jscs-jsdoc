@@ -9,7 +9,7 @@ describe('rules/validate-jsdoc', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'shouldn\'t throw',
+                it: 'should throw invalid type',
                 errors: 1,
                 code: function () {
                     /**
