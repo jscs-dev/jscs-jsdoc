@@ -9,6 +9,17 @@ describe('rules/validate-jsdoc', function () {
         checker.cases([
             /* jshint ignore:start */
             {
+                it: 'shouldn\'t throw',
+                errors: 1,
+                code: function () {
+                    /**
+                     * @return {Foo}
+                     */
+                    function getFoo() {
+                        return new Bar();
+                    }
+                }
+            }, {
                 it: 'should neither throw nor report',
                 code: function () {
                     /**

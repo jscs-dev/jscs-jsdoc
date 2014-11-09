@@ -1,27 +1,35 @@
+var assert = require('assert');
+
 describe('rules/validate-jsdoc', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('basic checks', function () {
+    describe('configure', function () {
 
-        checker.rules({checkReturnTypes: true});
-        checker.cases([
-            /* jshint ignore:start */
-            {
-                it: 'shouldn\'t throw',
-                errors: 1,
-                code: function () {
-                    /**
-                     * @return {Foo}
-                     */
-                    function getFoo() {
-                        return new Bar();
-                    }
-                }
-            }
-            /* jshint ignore:end */
-        ]);
+        it('should throw on call without params', function () {
+            assert.throws(function () {
+                checker.configure();
+            });
+        });
+
+        it('should throw with true', function () {
+            assert.throws(function () {
+                checker.configure(true);
+            });
+        });
+
+        it('should throw with empty object', function () {
+            assert.throws(function () {
+                checker.configure({});
+            });
+        });
+
+        it('should throw with unknown key', function () {
+            assert.throws(function () {
+                checker.configure({unknownRule: true});
+            });
+        });
 
     });
 });

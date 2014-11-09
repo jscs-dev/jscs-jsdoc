@@ -50,6 +50,9 @@ function rulesChecker(opts) {
                 checker.configure({jsDoc: rules});
             });
         },
+        configure: function(rules) {
+            checker.configure({jsDoc: rules});
+        },
         cases: function(items) {
             items = items || [];
             items.forEach(function(test) {
@@ -82,6 +85,9 @@ function rulesChecker(opts) {
                 });
 
             });
+        },
+        check: function(str) {
+            return checker.checkString(str);
         }
     };
 }
