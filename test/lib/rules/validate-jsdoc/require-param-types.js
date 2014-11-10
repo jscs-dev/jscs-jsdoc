@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/require-param-types', function () {
     var checker = global.checker({
-        additionalRules: ['lib/rules/validate-jsdoc.js']
+        plugins: ['.']
     });
 
     describe('not configured', function() {

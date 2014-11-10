@@ -51,8 +51,8 @@ To use plugin you should add these lines to configuration file `.jscsrc`:
 
 ```json
 {
-    "additionalRules": [
-        "node_modules/jscs-jsdoc/lib/rules/*.js"
+    "plugins": [
+        "jscs-jsdoc"
     ],
     "jsDoc": {
         "enforceExistence": true
