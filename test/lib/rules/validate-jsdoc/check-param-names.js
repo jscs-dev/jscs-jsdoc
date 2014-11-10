@@ -2,9 +2,9 @@ describe('rules/validate-jsdoc', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
-    checker.rules({checkParamNames: true});
 
     describe('check-param-names', function () {
+        checker.rules({checkParamNames: true});
 
         checker.cases([
             /* jshint ignore:start */
@@ -80,7 +80,7 @@ describe('rules/validate-jsdoc', function () {
                     function funcName(xxx) {
                     }
                 },
-                errors: {line: 3, column: 3}
+                errors: {line: 3, column: 19}
             }, {
                 it: 'should report error in jsdoc for method',
                 code: function () {
@@ -92,7 +92,7 @@ describe('rules/validate-jsdoc', function () {
                         }
                     };
                 },
-                errors: {line: 3, column: 7}
+                errors: {line: 3, column: 23}
             }
             /* jshint ignore:end */
         ]);
