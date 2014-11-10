@@ -74,6 +74,21 @@ describe('rules/validate-jsdoc', function () {
                         }
                     };
                 }
+
+            }, {
+                it: 'should not report redundant params',
+                code: function () {
+                    /**
+                     * Test
+                     *
+                     * @param {String} mystr
+                     * @return {String}
+                     */
+                    exports.testStr = function(mystr) {
+                        'use strict';
+                        return mystr;
+                    };
+                }
             }
             /* jshint ignore:end */
         ]);

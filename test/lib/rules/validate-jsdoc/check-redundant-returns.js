@@ -4,8 +4,8 @@ describe('rules/validate-jsdoc', function () {
     });
 
     describe('check-redundant-returns', function() {
-
         checker.rules({checkRedundantReturns: true});
+
         checker.cases([
             /* jshint ignore:start */
             {
