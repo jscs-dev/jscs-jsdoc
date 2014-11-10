@@ -13,6 +13,13 @@ describe('rules/validate-jsdoc', function () {
                 code: function() {
                     function yay(yey) {
                     }
+
+                    /**
+                     * @param {number} yay
+                     * @param {string} bar this shouldn't throw
+                     */
+                    function yey(yay) {
+                    }
                 }
 
             }, {
