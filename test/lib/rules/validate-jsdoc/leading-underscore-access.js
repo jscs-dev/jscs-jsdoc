@@ -8,6 +8,13 @@ describe('rules/validate-jsdoc', function () {
         checker.cases([
             /* jshint ignore:start */
             {
+                it: 'should not throw',
+                code: function() {
+                    function yay(yey) {
+                    }
+                }
+
+            }, {
                 it: 'should report enforcing @private on leading underscores',
                 rules: {leadingUnderscoreAccess: 'private'},
                 errors: 1,
