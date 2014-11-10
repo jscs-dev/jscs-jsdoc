@@ -1,11 +1,27 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/check-return-types', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('check-return-types', function () {
+    describe('configured', function() {
 
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkReturnTypes: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkReturnTypes: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('with true', function() {
         checker.rules({checkReturnTypes: true});
+
         checker.cases([
             /* jshint ignore:start */
             {

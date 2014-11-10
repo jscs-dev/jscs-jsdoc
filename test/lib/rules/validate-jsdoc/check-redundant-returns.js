@@ -1,9 +1,25 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/check-redundant-returns', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('check-redundant-returns', function() {
+    describe('configured', function() {
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkRedundantReturns: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkRedundantReturns: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('with true', function() {
         checker.rules({checkRedundantReturns: true});
 
         checker.cases([

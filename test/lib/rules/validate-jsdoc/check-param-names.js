@@ -1,9 +1,25 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/check-param-names', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('check-param-names', function () {
+    describe('configured', function() {
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkParamNames: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkParamNames: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('with true', function() {
         checker.rules({checkParamNames: true});
 
         checker.cases([
