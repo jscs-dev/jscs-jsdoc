@@ -3,45 +3,36 @@ describe('rules/validate-jsdoc', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('check-param-names', function () {
-        checker.rules({checkParamNames: true});
+    describe('require-param-types', function () {
+        checker.rules({requireParamTypes: true});
 
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should report invalid jsdoc',
+                it: 'should report missing jsdoc-param type for function',
+                errors: 1,
                 code: function () {
                     var x = 1;
                     /**
-                     * @param
+                     * @param xxx
                      */
                     function funcName(xxx) {
+                        // dummy
                     }
-                },
-                errors: 1
+                }
             }, {
-                it: 'should report error in jsdoc for function',
-                code: function () {
-                    var x = 1;
-                    /**
-                     * @param {String} yyy
-                     */
-                    function funcName(xxx) {
-                    }
-                },
-                errors: 1
-            }, {
-                it: 'should report error in jsdoc for method',
+                it: 'should report missing jsdoc-param type for method',
+                errors: 1,
                 code: function () {
                     Cls.prototype = {
                         /**
-                         * @param {String} yyy
+                         * @param yyy
                          */
                         run: function(xxx) {
+                            // dummy
                         }
                     };
-                },
-                errors: 1
+                }
             }, {
                 it: 'should not report valid jsdoc for method',
                 code: function () {
@@ -50,6 +41,7 @@ describe('rules/validate-jsdoc', function () {
                      * @param {String} xxx
                      */
                     function funcName(xxx) {
+                        // dummy
                     }
                 }
             }, {
@@ -60,39 +52,33 @@ describe('rules/validate-jsdoc', function () {
                          * @param {String} xxx
                          */
                         run: function(xxx) {
+                            // dummy
                         }
                     };
                 }
-            }
-            /* jshint ignore:end */
-        ]);
-
-        // locations
-        checker.cases([
-            /* jshint ignore:start */
-            {
-                it: 'should report error in jsdoc for function',
+            }, {
+                it: 'should not report valid jsdoc with object type for method',
                 code: function () {
                     var x = 1;
                     /**
-                     * @param {String} yyy
+                     * @param {{foo: string}} xxx
                      */
                     function funcName(xxx) {
+                        // dummy
                     }
-                },
-                errors: {line: 3, column: 19}
+                }
             }, {
-                it: 'should report error in jsdoc for method',
+                it: 'should not report valid jsdoc with object type for function',
                 code: function () {
                     Cls.prototype = {
                         /**
-                         * @param {String} yyy
+                         * @param {{foo: string}} xxx
                          */
                         run: function(xxx) {
+                            // dummy
                         }
                     };
-                },
-                errors: {line: 3, column: 23}
+                }
             }
             /* jshint ignore:end */
         ]);
