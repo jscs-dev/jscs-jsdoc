@@ -1,11 +1,27 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/check-redundant-access', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('check-redundant-access', function () {
+    describe('configured', function() {
 
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkRedundantAccess: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({checkRedundantAccess: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('with true', function() {
         checker.rules({checkRedundantAccess: true});
+
         checker.cases([
             /* jshint ignore:start */
             {

@@ -1,14 +1,31 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('leading-underscore-access', function () {
+    describe('configured', function() {
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({leadingUnderscoreAccess: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with object should throws', function() {
+            global.expect(function() {
+                checker.configure({leadingUnderscoreAccess: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('common', function() {
 
         checker.cases([
             /* jshint ignore:start */
             {
                 it: 'should not throw',
+                rules: {leadingUnderscoreAccess: true},
                 code: function() {
                     function yay(yey) {
                     }

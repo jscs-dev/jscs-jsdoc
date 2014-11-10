@@ -1,9 +1,25 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/require-param-types', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('require-param-types', function () {
+    describe('configured', function() {
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({requireParamTypes: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({requireParamTypes: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('with true', function() {
         checker.rules({requireParamTypes: true});
 
         checker.cases([

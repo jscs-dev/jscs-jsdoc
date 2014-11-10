@@ -6,6 +6,7 @@ var expect = chai.expect;
 global.parse = parse;
 global.fnBody = fnBody;
 global.checker = rulesChecker;
+global.expect = expect;
 
 function fnBody(func) {
     var str = func.toString();

@@ -1,11 +1,27 @@
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc/enforce-existence', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('enforce-existence', function () {
+    describe('configured', function() {
 
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({enforceExistence: undefined});
+            }).to.throws(/accepted value/i);
+        });
+
+        it('with undefined should throws', function() {
+            global.expect(function() {
+                checker.configure({enforceExistence: {}});
+            }).to.throws(/accepted value/i);
+        });
+
+    });
+
+    describe('with true', function() {
         checker.rules({enforceExistence: true});
+
         checker.cases([
             /* jshint ignore:start */
             {
