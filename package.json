@@ -2,7 +2,7 @@
   "name": "jscs-jsdoc",
   "author": "Alexej Yaroshevich <alex@qfox.ru>",
   "description": "JSCS jsdoc plugin",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "main": "lib/index",
   "homepage": "https://github.com/jscs-dev/jscs-jsdoc",
   "license": "MIT",
