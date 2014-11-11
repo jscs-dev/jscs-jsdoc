@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-describe('rules/validate-jsdoc', function () {
+describe('lib/rules/validate-jsdoc', function () {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
@@ -32,4 +32,30 @@ describe('rules/validate-jsdoc', function () {
         });
 
     });
+
+    describe('additional checks', function () {
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not throw anyway',
+                rules: {checkReturnTypes: true},
+                code: function() {
+                    /**
+                     * Cacher object
+                     * @constructor
+                     * @param {Object} o
+                     * @param {Object} [o.storage={}] initial storage for cache
+                     * @param {Number} [o.expTime=300] expiration time in seconds. 5 min by default
+                     */
+                    function Cacher (o) {
+                        // doesn't mean
+                    }
+                }
+            }
+            /* jshint ignore:end */
+        ]);
+
+    });
+
 });
