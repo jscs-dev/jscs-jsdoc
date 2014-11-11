@@ -169,7 +169,7 @@ function method(message) {}
 /**
  * @param {String} message
  */
-function method(message) {}
+function method() {}
 ```
 
 ### checkReturnTypes
