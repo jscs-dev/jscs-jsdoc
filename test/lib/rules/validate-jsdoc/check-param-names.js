@@ -127,6 +127,90 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
             /* jshint ignore:end */
         ]);
 
+        // out-of-order. issue #33
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should report out of order',
+                code: function () {
+                    /**
+                     * @param xxx
+                     * @param yyy
+                     */
+                    function funcName(yyy, xxx) {
+                    }
+                },
+                errors: [
+                    {message: 'parameters xxx and yyy are out of order', column: 10, line: 2, rule: "jsDoc"}
+                ]
+            }, {
+                it: 'should report out of order many times',
+                code: function () {
+                    Cls.prototype = {
+                        /**
+                         * @param xxx
+                         * @param yyy
+                         * @param zzz
+                         */
+                        run: function(zzz, xxx, yyy) {
+                        }
+                    };
+                },
+                errors: [
+                    {message: 'parameters xxx and zzz are out of order', column: 14, line: 3, rule: "jsDoc"},
+                    {message: 'parameters yyy and xxx are out of order', column: 14, line: 4, rule: "jsDoc"}
+                ]
+            }, {
+                it: 'should report out of order and expected',
+                code: function () {
+                    Cls.prototype = {
+                        /**
+                         * @param xxx
+                         * @param yyy
+                         */
+                        run: function(zzz, xxx) {
+                        }
+                    };
+                },
+                errors: [
+                    {message: 'parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc"},
+                    {message: 'expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc"}
+                ]
+            }, {
+                it: 'should report out of order and expected v2',
+                code: function () {
+                    Cls.prototype = {
+                        /**
+                         * @param xxx
+                         * @param yyy
+                         */
+                        run: function(yyy, zzz) {
+                        }
+                    };
+                },
+                errors: [
+                    {message: 'expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc"},
+                    {message: 'parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc"}
+                ]
+            }, {
+                it: 'should not report out of order but expected',
+                code: function () {
+                    Cls.prototype = {
+                        /**
+                         * @param xxx
+                         * @param yyy
+                         */
+                        run: function(zzz, yyy) {
+                        }
+                    };
+                },
+                errors: [
+                    {message: 'expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc"}
+                ]
+            }
+            /* jshint ignore:end */
+        ]);
+
     });
 
 });
