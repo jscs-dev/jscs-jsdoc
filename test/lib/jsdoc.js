@@ -39,15 +39,20 @@ describe('jsdoc', function() {
 
     describe('type', function() {
         var bool1;
+        var varnum;
 
         before(function() {
             bool1 = new Type('boolean', new Location(3, 4));
+            varnum = new Type('...number', new Location(10, 20));
         });
 
         it('should store data', function() {
             expect(bool1.value).to.eq('boolean');
             expect(bool1.loc.line).to.eq(3);
             expect(bool1.loc.column).to.eq(4);
+            expect(varnum.variable).to.eq(true);
+            expect(varnum.loc.line).to.eq(10);
+            expect(varnum.loc.column).to.eq(23);
         });
 
         it('should match types', function() {

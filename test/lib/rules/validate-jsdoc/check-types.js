@@ -141,6 +141,21 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                     ClsName.prototype.point = function (q, w) {
                     }
                 }
+            }, {
+                it: 'should not report invalid type for variable args (es6 rest). issue #35',
+                code: function() {
+                    /**
+                     * Returns the sum of all numbers passed to the function.
+                     * @param {...number} num - A positive or negative number.
+                     */
+                    function sum(num) {
+                        var i = 0, n = arguments.length, t = 0;
+                        for (; i < n; i++) {
+                            t += arguments[i];
+                        }
+                        return t;
+                    }
+                }
             }
             /* jshint ignore:end */
         ]);
