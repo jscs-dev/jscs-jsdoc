@@ -3,15 +3,15 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('configured', function() {
+    describe('not configured', function() {
 
-        it('with undefined should throws', function() {
+        it('should report with undefined', function() {
             global.expect(function() {
                 checker.configure({checkParamNames: undefined});
             }).to.throws(/accepted value/i);
         });
 
-        it('with undefined should throws', function() {
+        it('should report with an object', function() {
             global.expect(function() {
                 checker.configure({checkParamNames: {}});
             }).to.throws(/accepted value/i);
@@ -25,7 +25,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should not throw',
+                it: 'should not report',
                 code: function() {
                     function yay(yey) {
                     }
@@ -37,7 +37,6 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     function yey(yay) {
                     }
                 }
-
             }, {
                 it: 'should report invalid jsdoc',
                 code: function () {
