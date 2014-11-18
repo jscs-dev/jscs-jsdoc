@@ -14,7 +14,9 @@
     "url": "https://github.com/jscs-dev/jscs-jsdoc/issues"
   },
   "contributors": [
-    "Alexej Yaroshevich <alex@qfox.ru>"
+    "Alexej Yaroshevich <alex@qfox.ru>",
+    "Henry Zhu <hi@henryzoo.com>",
+    "Christopher Hiller <chiller@badwing.com>"
   ],
   "engines": {
     "node": ">= 0.10.0"
