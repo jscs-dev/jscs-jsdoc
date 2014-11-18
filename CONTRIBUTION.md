@@ -29,3 +29,7 @@ Features
 It you've got an idea about a new feature, it's most likely that you'll have to implement it on your own.
 If you cannot implement the feature, but it is very important, you can create an issue at GitHub,
 but expect it to be declined by the maintainer.
+
+Feel free to add your own rules. We really need to know your guide styles to write js documentation.
+
+Please read [maintainers guide](./MAINTAIN.md) with inner API and some other things.
