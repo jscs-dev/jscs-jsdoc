@@ -455,6 +455,43 @@ function _f() {}
 function _g() {}
 ```
 
+
+### requireHyphenBeforeDescription
+
+Ensures a param description has a hyphen before it (checks for `- `)
+
+Type: `Boolean`
+
+Values: `true`
+
+Context: `functions`
+
+Tags: `param`, `arg`, `argument`
+
+#### Example
+
+```js
+"requireHyphenBeforeDescription": true
+```
+
+##### Valid
+
+```js
+/**
+ * @param {String} - message
+ */
+function method() {}
+```
+
+##### Invalid
+
+```js
+/**
+ * @param {String} message
+ */
+function method() {}
+```
+
 ## Browser Usage
 
 NOT SUPPORTED ATM. SORRY.
