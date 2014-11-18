@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/enforce-existence', function () {
     var checker = global.checker({
-        plugins: ['.']
+        plugins: ['./lib/index']
     });
 
     describe('not configured', function() {
