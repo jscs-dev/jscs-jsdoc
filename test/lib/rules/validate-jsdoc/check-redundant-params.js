@@ -3,15 +3,15 @@ describe('lib/rules/validate-jsdoc/check-redundant-params', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('configured', function() {
+    describe('not configured', function() {
 
-        it('with undefined should throws', function() {
+        it('should report with undefined', function() {
             global.expect(function() {
                 checker.configure({checkRedundantParams: undefined});
             }).to.throws(/accepted value/i);
         });
 
-        it('with undefined should throws', function() {
+        it('should report with an object', function() {
             global.expect(function() {
                 checker.configure({checkRedundantParams: {}});
             }).to.throws(/accepted value/i);
@@ -25,12 +25,11 @@ describe('lib/rules/validate-jsdoc/check-redundant-params', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should not throw',
+                it: 'should not report',
                 code: function() {
                     function yay(yey) {
                     }
                 }
-
             }, {
                 it: 'should report redundant jsdoc-param for function',
                 errors: 1,

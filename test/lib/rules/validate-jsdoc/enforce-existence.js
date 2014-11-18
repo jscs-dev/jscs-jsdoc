@@ -3,15 +3,15 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('configured', function() {
+    describe('not configured', function() {
 
-        it('with undefined should throws', function() {
+        it('should report with undefined', function() {
             global.expect(function() {
                 checker.configure({enforceExistence: undefined});
             }).to.throws(/accepted value/i);
         });
 
-        it('with undefined should throws', function() {
+        it('should report with an object', function() {
             global.expect(function() {
                 checker.configure({enforceExistence: {}});
             }).to.throws(/accepted value/i);

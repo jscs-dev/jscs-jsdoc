@@ -3,15 +3,15 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('configured', function() {
+    describe('not configured', function() {
 
-        it('with undefined should throws', function() {
+        it('should report with undefined', function() {
             global.expect(function() {
                 checker.configure({leadingUnderscoreAccess: undefined});
             }).to.throws(/accepted value/i);
         });
 
-        it('with object should throws', function() {
+        it('should report with an object', function() {
             global.expect(function() {
                 checker.configure({leadingUnderscoreAccess: {}});
             }).to.throws(/accepted value/i);
@@ -24,13 +24,12 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should not throw',
+                it: 'should not report',
                 rules: {leadingUnderscoreAccess: true},
                 code: function() {
                     function yay(yey) {
                     }
                 }
-
             }, {
                 it: 'should report enforcing @private on leading underscores',
                 rules: {leadingUnderscoreAccess: 'private'},

@@ -3,15 +3,15 @@ describe('lib/rules/validate-jsdoc/check-return-types', function () {
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
 
-    describe('configured', function() {
+    describe('not configured', function() {
 
-        it('with undefined should throws', function() {
+        it('should report with undefined', function() {
             global.expect(function() {
                 checker.configure({checkReturnTypes: undefined});
             }).to.throws(/accepted value/i);
         });
 
-        it('with undefined should throws', function() {
+        it('should report with an object', function() {
             global.expect(function() {
                 checker.configure({checkReturnTypes: {}});
             }).to.throws(/accepted value/i);
@@ -25,14 +25,13 @@ describe('lib/rules/validate-jsdoc/check-return-types', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should not throw',
+                it: 'should not report',
                 code: function() {
                     function yay(yey) {
                     }
                 }
-
             }, {
-                it: 'should throw invalid type',
+                it: 'should report invalid type',
                 errors: 1,
                 code: function () {
                     /**
@@ -43,7 +42,7 @@ describe('lib/rules/validate-jsdoc/check-return-types', function () {
                     }
                 }
             }, {
-                it: 'should neither throw nor report',
+                it: 'should not report',
                 code: function () {
                     /**
                      * @return {{a: number, b: string}}
