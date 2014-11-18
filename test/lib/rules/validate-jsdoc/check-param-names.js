@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/check-param-names', function () {
     var checker = global.checker({
-        plugins: ['.']
+        plugins: ['./lib/index']
     });
 
     describe('not configured', function() {
@@ -140,7 +140,13 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     }
                 },
                 errors: [
-                    {message: 'parameters xxx and yyy are out of order', column: 10, line: 2, rule: "jsDoc"}
+                    {
+                        message: 'parameters xxx and yyy are out of order',
+                        column: 10,
+                        line: 2,
+                        rule: "jsDoc",
+                        filename: "input"
+                    }
                 ]
             }, {
                 it: 'should report out of order many times',
@@ -156,8 +162,20 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     };
                 },
                 errors: [
-                    {message: 'parameters xxx and zzz are out of order', column: 14, line: 3, rule: "jsDoc"},
-                    {message: 'parameters yyy and xxx are out of order', column: 14, line: 4, rule: "jsDoc"}
+                    {
+                        message: 'parameters xxx and zzz are out of order',
+                        column: 14,
+                        line: 3,
+                        rule: "jsDoc",
+                        filename: "input"
+                    },
+                    {
+                        message: 'parameters yyy and xxx are out of order',
+                        column: 14,
+                        line: 4,
+                        rule: "jsDoc",
+                        filename: "input"
+                    }
                 ]
             }, {
                 it: 'should report out of order and expected',
@@ -172,8 +190,8 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     };
                 },
                 errors: [
-                    {message: 'parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc"},
-                    {message: 'expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc"}
+                    {message: 'parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc", filename: "input"},
+                    {message: 'expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc", filename: "input"}
                 ]
             }, {
                 it: 'should report out of order and expected v2',
@@ -188,8 +206,8 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     };
                 },
                 errors: [
-                    {message: 'expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc"},
-                    {message: 'parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc"}
+                    {message: 'expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input"},
+                    {message: 'parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc", filename: "input"}
                 ]
             }, {
                 it: 'should not report out of order but expected',
@@ -204,7 +222,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     };
                 },
                 errors: [
-                    {message: 'expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc"}
+                    {message: 'expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input"}
                 ]
             }
             /* jshint ignore:end */

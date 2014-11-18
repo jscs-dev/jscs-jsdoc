@@ -2,7 +2,7 @@ var assert = require('assert');
 
 describe('lib/rules/validate-jsdoc', function () {
     var checker = global.checker({
-        plugins: ['.']
+        plugins: ['./lib/index']
     });
 
     describe('configure', function () {

@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/check-types', function() {
     var checker = global.checker({
-        plugins: ['.']
+        plugins: ['./lib/index']
     });
 
     describe('not configured', function() {
