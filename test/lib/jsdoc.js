@@ -7,6 +7,22 @@ describe('jsdoc', function() {
     var Tag = jsdoc.tag;
     var Comment = jsdoc.doc;
 
+    describe('inline comment block', function() {
+        var c1;
+
+        before(function() {
+            c1 = new Comment('/** @tag1 */', {start: {line: 1, column: 0}});
+        });
+
+        it('should parses tag', function() {
+            expect(c1.tags.length).to.eq(1);
+
+            var tag1 = c1.tags[0];
+            expect(tag1.id).to.eq('tag1');
+        });
+
+    });
+
     describe('location', function() {
 
         it('should create valid location', function() {
