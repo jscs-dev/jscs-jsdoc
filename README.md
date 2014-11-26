@@ -300,9 +300,11 @@ function method() {}
 
 Reports invalid types for bunch of tags
 
-Type: `Boolean`
+In `strictNativeCase` mode ensures that case of natives is the same as in this list: `boolean`, `number`, `string`, `null`, `Object`, `Array`, `Date`, `RegExp`.
 
-Values: `true`
+Type: `Boolean` or `String`
+
+Values: `true` or `"strictNativeCase"`
 
 Context: `*`
 
@@ -343,6 +345,21 @@ function method(x) {}
 ```
 
 ##### Invalid
+
+```js
+/** @type {some~number} */
+var x = 1;
+
+/**
+ * @param {function(redundantName: Number)} x
+ */
+function method(x) {}
+
+/**
+ * @param {Number|Boolean|object|array} x invalid for strictNativeCase
+ */
+function method(x) {}
+```
 
 ```js
 /** @type {some~number} */
