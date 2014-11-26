@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
     var checker = global.checker({
-        additionalRules: ['lib/rules/validate-jsdoc.js']
+        plugins: ['./lib/index']
     });
 
     describe('not configured', function() {
@@ -93,7 +93,13 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                      */
                     function _funcName(p) {}
                 },
-                errors: [{ line: 6, column: 0, message: 'Method access doesn\'t match', rule: 'jsDoc' }]
+                errors: [{
+                    line: 6,
+                    column: 0,
+                    message: 'Method access doesn\'t match',
+                    rule: 'jsDoc',
+                    filename: 'input'
+                }]
             }, {
                 it: 'should skip anonymous',
                 rules: {leadingUnderscoreAccess: true},
