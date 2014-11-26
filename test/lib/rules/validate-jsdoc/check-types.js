@@ -23,7 +23,7 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
         checker.rules({checkTypes: true});
 
         checker.cases([
-            /* jshint ignore:start */
+            /* jshint ignore:start *//* jscs: disable */
             {
                 it: 'should not report',
                 code: function() {
@@ -156,7 +156,82 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                     }
                 }
             }
-            /* jshint ignore:end */
+            /* jshint ignore:end *//* jscs: enable */
+        ]);
+
+    });
+
+    describe('with strictNativeCase', function() {
+        checker.rules({checkTypes: 'strictNativeCase'});
+
+        checker.cases([
+            /* jshint ignore:start *//* jscs: disable */
+            {
+                it: 'should not report strict natives',
+                code: function() {
+                    /**
+                     * @param {number}
+                     * @param {string}
+                     * @param {boolean}
+                     * @param {null}
+                     * @param {Array}
+                     * @param {Object}
+                     * @param {Date}
+                     * @param {Function}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should not report joined strict natives',
+                code: function() {
+                    /**
+                     * @param {number|string|boolean|null|Array|Object|Date}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should not report strict natives declared as function arguments',
+                code: function() {
+                    /**
+                     * @param {function(number, Array)}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should report strict natives',
+                errors: 6,
+                code: function() {
+                    /**
+                     * @param {Number}
+                     * @param {String}
+                     * @param {Boolean}
+                     * @param {array}
+                     * @param {object}
+                     * @param {date}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should report joined wrong cased strict natives',
+                errors: 7,
+                code: function() {
+                    /**
+                     * @param {Number|String|Boolean|Null}
+                     * @param {array|object|date}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should report joined strict wrong cased natives',
+                code: function() {
+                    /**
+                     * @param {Number|String|Boolean|Null|array|object|date|regexp|function}
+                     */
+                    function _f () {}
+                },
+                errors: 9
+            }
+            /* jshint ignore:end *//* jscs: enable */
         ]);
 
     });
