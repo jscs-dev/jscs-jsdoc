@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/check-redundant-params', function () {
     var checker = global.checker({
-        additionalRules: ['lib/rules/validate-jsdoc.js']
+        plugins: ['./lib/index']
     });
 
     describe('not configured', function() {
