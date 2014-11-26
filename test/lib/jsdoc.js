@@ -56,10 +56,12 @@ describe('jsdoc', function() {
     describe('type', function() {
         var bool1;
         var varnum;
+        var nullie;
 
         before(function() {
             bool1 = new Type('boolean', new Location(3, 4));
             varnum = new Type('...number', new Location(10, 20));
+            nullie = new Type('Null|null', new Location(2, 5));
         });
 
         it('should store data', function() {
@@ -76,6 +78,18 @@ describe('jsdoc', function() {
             expect(bool1.match({type: 'Literal', value: null})).to.eq(false);
         });
 
+        it('should parse null', function() {
+            var passed = '';
+            nullie.iterate(function(type) {
+                if (type.typeName === 'Null') {
+                    passed += 1;
+                }
+                if (type.typeName === 'null') {
+                    passed += 2;
+                }
+            });
+            expect(passed).to.eq('12');
+        });
     });
 
     describe('tag', function() {
