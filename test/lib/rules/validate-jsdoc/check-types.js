@@ -236,4 +236,79 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
 
     });
 
+    describe('with capitalzedNativeCase', function() {
+        checker.rules({checkTypes: 'capitalizedNativeCase'});
+
+        checker.cases([
+            /* jshint ignore:start *//* jscs: disable */
+            {
+                it: 'should not report strict natives',
+                code: function() {
+                    /**
+                     * @param {Number}
+                     * @param {String}
+                     * @param {Boolean}
+                     * @param {Null}
+                     * @param {Array}
+                     * @param {Object}
+                     * @param {Date}
+                     * @param {Function}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should not report joined native types',
+                code: function() {
+                    /**
+                     * @param {Number|String|Boolean|Null|Array|Object|Date}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should not report function arguments',
+                code: function() {
+                    /**
+                     * @param {function(Number, Array)}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should report lowercased natives',
+                errors: 6,
+                code: function() {
+                    /**
+                     * @param {number}
+                     * @param {string}
+                     * @param {boolean}
+                     * @param {array}
+                     * @param {object}
+                     * @param {date}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should report joined lowercased natives',
+                errors: 7,
+                code: function() {
+                    /**
+                     * @param {number|string|boolean|null}
+                     * @param {array|object|date}
+                     */
+                    function _f () {}
+                }
+            }, {
+                it: 'should report joined strict wrong cased natives',
+                code: function() {
+                    /**
+                     * @param {number|string|boolean|null|array|object|date|regexp|function}
+                     */
+                    function _f () {}
+                },
+                errors: 9
+            }
+            /* jshint ignore:end *//* jscs: enable */
+        ]);
+
+    });
+
 });

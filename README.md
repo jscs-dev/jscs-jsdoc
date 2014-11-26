@@ -374,9 +374,11 @@ Reports invalid types for bunch of tags
 
 In `strictNativeCase` mode ensures that case of natives is the same as in this list: `boolean`, `number`, `string`, `null`, `Object`, `Array`, `Date`, `RegExp`.
 
+In `capitalizedNativeCase` mode ensures that all types are uppercased except function closure format: `{function(...)}`
+
 Type: `Boolean` or `String`
 
-Values: `true` or `"strictNativeCase"`
+Values: `true` or `"strictNativeCase"` or `"capitalizedNativeCase"`
 
 Context: `*`
 
