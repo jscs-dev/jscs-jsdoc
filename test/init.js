@@ -8,6 +8,11 @@ global.fnBody = fnBody;
 global.checker = rulesChecker;
 global.expect = expect;
 
+/**
+ * parses body of function
+ * @param {Function} func
+ * @returns {string} body of func
+ */
 function fnBody(func) {
     var str = func.toString();
     var out = str.slice(
@@ -34,6 +39,14 @@ function fnBody(func) {
     return out;
 }
 
+/**
+ * Testing helper object
+ * @param {Object} opts default options for jscs string checker
+ * @returns {{rules: function(Object),
+ *   configure: function(Object),
+ *   cases: function(Array.<TestCase{it: string, code: Function, ?rules: Object, ?errors: *, ?skip: boolean}>),
+ *   check: function(string)}}
+ */
 function rulesChecker(opts) {
     var checker;
 
@@ -46,14 +59,28 @@ function rulesChecker(opts) {
     });
 
     return {
+        /**
+         * set rules for each case (beforeEach wrapper)
+         * @param {Object} rules
+         */
         rules: function(rules) {
             beforeEach(function() {
                 checker.configure({jsDoc: rules});
             });
         },
+
+        /**
+         * set rules immediately
+         * @param {Object} rules
+         */
         configure: function(rules) {
             checker.configure({jsDoc: rules});
         },
+
+        /**
+         * describe cases (wrapper for mocha it calls)
+         * @param {Array.<{it: string, code: Function, ?rules: Object, ?errors: *, ?skip: boolean}>} items
+         */
         cases: function(items) {
             items = items || [];
             items.forEach(function(test) {
@@ -87,6 +114,11 @@ function rulesChecker(opts) {
 
             });
         },
+
+        /**
+         * @param {string} str
+         * @returns {Object}
+         */
         check: function(str) {
             return checker.checkString(str);
         }
@@ -96,6 +128,10 @@ function rulesChecker(opts) {
 chai.use(function(chai, utils) {
     utils.addMethod(chai.Assertion.prototype, 'similar', method);
 
+    /**
+     * @param {Object} expected
+     * @throws {Error}
+     */
     function method(expected) {
         var obj = utils.flag(this, 'object');
 

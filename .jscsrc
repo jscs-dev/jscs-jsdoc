@@ -16,5 +16,20 @@
     "excludeFiles": [
       "test/data/**",
       "test/lib/rules/**"
-    ]
+    ],
+
+    "plugins": ["jscs-jsdoc"],
+
+    "jsDoc": {
+        "enforceExistence": true,
+        "checkAnnotations": "closurecompiler",
+        "checkParamNames": true,
+        "requireParamTypes": true,
+        "checkRedundantParams": true,
+        "checkReturnTypes": true,
+        "checkRedundantReturns": true,
+        "requireReturnTypes": true,
+        "checkTypes": "strictNativeCase",
+        "checkRedundantAccess": true
+    }
 }
