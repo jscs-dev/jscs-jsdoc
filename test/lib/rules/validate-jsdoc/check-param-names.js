@@ -1,4 +1,4 @@
-describe('lib/rules/validate-jsdoc/check-param-names', function () {
+describe('lib/rules/validate-jsdoc/check-param-names', function() {
     var checker = global.checker({
         additionalRules: ['lib/rules/validate-jsdoc.js']
     });
@@ -24,6 +24,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
 
         checker.cases([
             /* jshint ignore:start */
+            // jscs:disable
             {
                 it: 'should not report',
                 code: function() {
@@ -93,12 +94,14 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                     };
                 }
             }
+            // jscs:enable
             /* jshint ignore:end */
         ]);
 
         // locations
         checker.cases([
             /* jshint ignore:start */
+            // jscs:disable
             {
                 it: 'should report error in jsdoc for function',
                 code: function () {
@@ -123,12 +126,14 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                 },
                 errors: {line: 3, column: 23}
             }
+            // jscs:enable
             /* jshint ignore:end */
         ]);
 
         // out-of-order. issue #33
         checker.cases([
             /* jshint ignore:start */
+            /* jscs:disable */
             {
                 it: 'should report out of order',
                 code: function () {
@@ -206,7 +211,35 @@ describe('lib/rules/validate-jsdoc/check-param-names', function () {
                 errors: [
                     {message: 'expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc"}
                 ]
+
+            }, {
+                it: 'should not report simple ticked param',
+                code: function() {
+                    /**
+                     * @param {String} `message`
+                     */
+                    function methodOne(message) {}
+                }
+            }, {
+                it: 'should not report chevroned params',
+                code: function() {
+                    /**
+                     * @param {String} <required>
+                     * @param {Object} [optional]
+                     */
+                    function methodTwo(required, optional) {}
+                }
+            }, {
+                it: 'should not report ticked params',
+                code: function() {
+                    /**
+                     * @param {String} `<required>`
+                     * @param {Object} `[optional="abcabc"]`
+                     */
+                    function methodThree(required, optional) {}
+                }
             }
+            /* jscs: enable */
             /* jshint ignore:end */
         ]);
 
