@@ -68,11 +68,11 @@ Ensures tag names are valid
 
 There are 3 presets for `Closure Compiler`, `JSDoc3` and `JSDuck5`.
 
-By default it allows any tag of mixed set.
+By default it allows any tag of mixed set. You can pass `Object` to select preset with `preset` field and add custom tags with `extra` field.
 
-Type: `Boolean` or `String`
+Type: `Boolean` or `String` or `{"preset": String, "extra": Object}` (`extra` field should contains tags in keys and boolean in values. false means no value possible)
 
-Values: `true`, `"closurecompiler"`, `"jsdoc3"`, `"jsduck5"`
+Values: `true`, `"closurecompiler"`, `"jsdoc3"`, `"jsduck5"`, `Object`
 
 Context: `file`
 
@@ -103,6 +103,33 @@ function _f() {}
  * @lalala
  */
 function _f() {}
+```
+
+#### Example 2
+
+```js
+"checkAnnotations": {
+    "preset": "jsdoc3",
+    "extra": {
+        "boomer": false
+    }
+}
+```
+
+##### Valid
+
+```js
+/**
+ * @boomer
+ * @argument {String}
+ */
+function _f() {}
+```
+
+##### Invalid
+
+```js
+/** @still-invalid */
 ```
 
 ####
