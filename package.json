@@ -16,7 +16,8 @@
   "contributors": [
     "Alexej Yaroshevich <alex@qfox.ru>",
     "Henry Zhu <hi@henryzoo.com>",
-    "Christopher Hiller <chiller@badwing.com>"
+    "Christopher Hiller <chiller@badwing.com>",
+    "Raphael Pigulla <raphael.pigulla@tngtech.com>"
   ],
   "engines": {
     "node": ">= 0.10.0"
