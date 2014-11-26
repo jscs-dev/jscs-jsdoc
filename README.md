@@ -62,6 +62,51 @@ To use plugin you should add these lines to configuration file `.jscsrc`:
 
 ## Rules
 
+### checkAnnotations
+
+Ensures tag names are valid
+
+There are 3 presets for `Closure Compiler`, `JSDoc3` and `JSDuck5`.
+
+By default it allows any tag of mixed set.
+
+Type: `Boolean` or `String`
+
+Values: `true`, `"closurecompiler"`, `"jsdoc3"`, `"jsduck5"`
+
+Context: `file`
+
+Tags: `*`
+
+#### Example
+
+```js
+"checkAnnotations": true
+```
+
+##### Valid
+
+```js
+/**
+ * @chainable
+ * @param {string} message
+ * @return {string}
+ */
+function _f() {}
+```
+
+##### Invalid
+
+```js
+/**
+ * @pororo
+ * @lalala
+ */
+function _f() {}
+```
+
+####
+
 ### checkParamNames
 
 Ensures param names in jsdoc and in function declaration are equal
