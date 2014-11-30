@@ -118,9 +118,33 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
                         };
                     })();
                 }
+            }, {
+                it: 'should report jsdocs existence for module.exports anonymous function',
+                code: function () {
+                    module.exports = function () {
+                    };
+                },
+                errors: 1
             }
             /* jshint ignore:end */
         ]);
 
     });
+
+    describe('with exceptExports', function() {
+        checker.rules({enforceExistence: 'exceptExports'});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdocs existence for module.exports anonymous function',
+                code: function () {
+                    module.exports = function () {
+                    };
+                }
+            }
+            /* jshint ignore:end */
+        ]);
+    });
+
 });

@@ -55,7 +55,9 @@ To use plugin you should add these lines to configuration file `.jscsrc`:
         "jscs-jsdoc"
     ],
     "jsDoc": {
-        "enforceExistence": true
+        "checkAnnotations": "closurecompiler",
+        "checkTypes": "strictNativeCase",
+        "enforceExistence": "exceptExports"
     }
 }
 ```
@@ -519,9 +521,9 @@ function _e() {}
 
 Ensures jsdoc block exist
 
-Type: `Boolean`
+Type: `Boolean` or `String`
 
-Values: `true`
+Values: `true` or `"exceptExports"` (skip `module.exports = function () {};`)
 
 Context: `functions`
 
