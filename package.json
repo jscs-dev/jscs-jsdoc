@@ -2,7 +2,7 @@
   "name": "jscs-jsdoc",
   "author": "Alexej Yaroshevich <alex@qfox.ru>",
   "description": "JSCS jsdoc plugin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "lib/index",
   "homepage": "https://github.com/jscs-dev/jscs-jsdoc",
   "license": "MIT",
@@ -34,9 +34,6 @@
   },
   "peerDependencies": {
     "jscs": ">=1.8.0 <2.0"
-  },
-  "optionalDependencies": {
-    "browserify": "^6.3.3"
   },
   "scripts": {
     "lint": "jshint lib test && jscs lib test",
