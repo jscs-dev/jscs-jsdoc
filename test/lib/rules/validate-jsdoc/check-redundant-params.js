@@ -104,6 +104,17 @@ describe('lib/rules/validate-jsdoc/check-redundant-params', function () {
                         return mystr;
                     };
                 }
+            }, {
+                it: 'should not report redundant params with variable params',
+                code: function () {
+                    /**
+                     * Issue #62
+                     * @param {function} callback function to call after the delay
+                     * @param {number} delay delay in ms
+                     * @param {...*} args arbitrary arguments for the callback function
+                     */
+                    function setTimeout(callback, delay) {}
+                }
             }
             /* jshint ignore:end */
         ]);
