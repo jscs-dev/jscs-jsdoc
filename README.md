@@ -1,4 +1,5 @@
 # jscs-jsdoc
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/jscs-dev/jscs-jsdoc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://secure.travis-ci.org/jscs-dev/jscs-jsdoc.svg?branch=master)](http://travis-ci.org/jscs-dev/jscs-jsdoc)
 [![NPM version](https://badge.fury.io/js/jscs-jsdoc.png)](http://badge.fury.io/js/jscs-jsdoc)
 [![Dependency Status](https://david-dm.org/jscs-dev/jscs-jsdoc.png)](https://david-dm.org/jscs-dev/jscs-jsdoc)
