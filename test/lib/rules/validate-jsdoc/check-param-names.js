@@ -266,9 +266,17 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                      * @param {String|Boolean|Array} [mod.modVal]
                      * @param {Object} props
                      * @param {Object} [staticProps]
-                     * @returns {Function}
                      */
                     function yeah(mod, props, staticProps) {}
+                }
+            }, {
+                it: 'should not report wrong order',
+                code: function() {
+                    /**
+                     * @param {string|Array.<string>} types
+                     * @param {function(this: DocComment, DocTag): DocComment} fn
+                     */
+                    function iterateByTypes(types, fn) {}
                 }
             }
             /* jscs: enable */
