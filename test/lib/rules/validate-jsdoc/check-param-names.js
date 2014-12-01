@@ -256,6 +256,20 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                      */
                     function methodThree(required, optional) {}
                 }
+            }, {
+                it: 'should not report dotted param names',
+                code: function() {
+                    /**
+                     * Declares modifier
+                     * @param {Object} mod
+                     * @param {String} mod.modName
+                     * @param {String|Boolean|Array} [mod.modVal]
+                     * @param {Object} props
+                     * @param {Object} [staticProps]
+                     * @returns {Function}
+                     */
+                    function yeah(mod, props, staticProps) {}
+                }
             }
             /* jscs: enable */
             /* jshint ignore:end */
