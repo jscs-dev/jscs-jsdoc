@@ -146,7 +146,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                 },
                 errors: [
                     {
-                        message: 'parameters xxx and yyy are out of order',
+                        message: 'Parameters xxx and yyy are out of order',
                         column: 10,
                         line: 2,
                         rule: "jsDoc",
@@ -168,14 +168,14 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                 },
                 errors: [
                     {
-                        message: 'parameters xxx and zzz are out of order',
+                        message: 'Parameters xxx and zzz are out of order',
                         column: 14,
                         line: 3,
                         rule: "jsDoc",
                         filename: "input"
                     },
                     {
-                        message: 'parameters yyy and xxx are out of order',
+                        message: 'Parameters yyy and xxx are out of order',
                         column: 14,
                         line: 4,
                         rule: "jsDoc",
@@ -195,8 +195,8 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     };
                 },
                 errors: [
-                    {message: 'parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc", filename: "input"},
-                    {message: 'expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc", filename: "input"}
+                    {message: 'Parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc", filename: "input"},
+                    {message: 'Expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc", filename: "input"}
                 ]
             }, {
                 it: 'should report out of order and expected v2',
@@ -211,8 +211,8 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     };
                 },
                 errors: [
-                    {message: 'expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input"},
-                    {message: 'parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc", filename: "input"}
+                    {message: 'Expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input"},
+                    {message: 'Parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc", filename: "input"}
                 ]
             }, {
                 it: 'should not report out of order but expected',
@@ -227,10 +227,27 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     };
                 },
                 errors: [
-                    {message: 'expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input"}
+                    {message: 'Expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input"}
                 ]
-
             }, {
+                it: 'should not report wrong order',
+                code: function() {
+                    /**
+                     * @param {string|Array.<string>} types
+                     * @param {function(this: DocComment, DocTag): DocComment} fn
+                     */
+                    function iterateByTypes(types, fn) {}
+                }
+            }
+            // jscs:enable
+            /* jshint ignore:end */
+        ]);
+
+        // ticked and chevroned param names
+        checker.cases([
+            /* jshint ignore:start */
+            /* jscs:disable */
+            {
                 it: 'should not report simple ticked param',
                 code: function() {
                     /**
@@ -256,7 +273,16 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                      */
                     function methodThree(required, optional) {}
                 }
-            }, {
+            }
+            // jscs:enable
+            /* jshint ignore:end */
+        ]);
+
+        // dotted param names
+        checker.cases([
+            /* jshint ignore:start */
+            /* jscs:disable */
+            {
                 it: 'should not report dotted param names',
                 code: function() {
                     /**
@@ -270,14 +296,50 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     function yeah(mod, props, staticProps) {}
                 }
             }, {
-                it: 'should not report wrong order',
+                it: 'should report inconsistency of separated dotted params',
                 code: function() {
                     /**
-                     * @param {string|Array.<string>} types
-                     * @param {function(this: DocComment, DocTag): DocComment} fn
+                     * @param {Object} options
+                     * @param {String} definetelyNotOptions.cdir
+                     * @param {Boolean} otherOptions.noLog
                      */
-                    function iterateByTypes(types, fn) {}
-                }
+                    module.exports.createMiddleware = function(options) { /* ... */ };
+                },
+                errors: [
+                    {
+                        "column": 19,
+                        "filename": "input",
+                        "line": 3,
+                        "message": "Expected `options` but got `definetelyNotOptions`",
+                        "rule": "jsDoc"
+                    },
+                    {
+                        "column": 20,
+                        "filename": "input",
+                        "line": 4,
+                        "message": "Expected `options` but got `otherOptions`",
+                        "rule": "jsDoc"
+                    }
+                ]
+            }, {
+                it: 'should report unjoined params',
+                code: function() {
+                    /**
+                     * @param {String} options.cdir
+                     */
+                    module.exports.createMiddleware = function() { /* ... */ };
+                },
+                errors: { "message": "Inconsistent param found" }
+            }, {
+                it: 'should not report params',
+                code: function() {
+                    /**
+                     * @param {Object} options
+                     * @param {String} options.cdir
+                     */
+                    module.exports.createMiddleware = function() { /* ... */ };
+                },
+                errors: []
             }
             /* jscs: enable */
             /* jshint ignore:end */
