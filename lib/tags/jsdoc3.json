@@ -1,6 +1,6 @@
 {
     "abstract": false,
-    "access": true,
+    "access": "some",
     "alias": true,
     "arg": true,
     "argument": true,

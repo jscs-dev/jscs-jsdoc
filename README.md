@@ -73,13 +73,22 @@ There are 3 presets for `Closure Compiler`, `JSDoc3` and `JSDuck5`.
 
 By default it allows any tag of mixed set. You can pass `Object` to select preset with `preset` field and add custom tags with `extra` field.
 
-Type: `Boolean` or `String` or `{"preset": String, "extra": Object}` (`extra` field should contains tags in keys and boolean in values. false means no value possible)
+Type: `Boolean` or `String` or `{"preset": String, "extra": Object}` (see [tag values](#user-content-tag-values))
 
 Values: `true`, `"closurecompiler"`, `"jsdoc3"`, `"jsduck5"`, `Object`
 
 Context: `file`
 
 Tags: `*`
+
+#### Tag values
+
+`extra` field should contains tags in keys and there are options for values:
+- `false` means tag available with no value
+- `true` means tag available with any value
+- `"some"` means tag available and requires some value
+
+See also [tag presets](https://github.com/jscs-dev/jscs-jsdoc/tree/hotfix/check-annotations-rework/lib/tags).
 
 #### Example
 
