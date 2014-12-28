@@ -173,7 +173,6 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                      * @param {number}
                      * @param {string}
                      * @param {boolean}
-                     * @param {null}
                      * @param {Array}
                      * @param {Object}
                      * @param {Date}
@@ -185,7 +184,7 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                 it: 'should not report joined strict natives',
                 code: function() {
                     /**
-                     * @param {number|string|boolean|null|Array|Object|Date}
+                     * @param {number|string|boolean|Array|Object|Date}
                      */
                     function _f () {}
                 }
@@ -213,10 +212,10 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                 }
             }, {
                 it: 'should report joined wrong cased strict natives',
-                errors: 7,
+                errors: 6,
                 code: function() {
                     /**
-                     * @param {Number|String|Boolean|Null}
+                     * @param {Number|String|Boolean}
                      * @param {array|object|date}
                      */
                     function _f () {}
@@ -225,11 +224,11 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                 it: 'should report joined strict wrong cased natives',
                 code: function() {
                     /**
-                     * @param {Number|String|Boolean|Null|array|object|date|regexp|function}
+                     * @param {Number|String|Boolean|array|object|date|regexp|function}
                      */
                     function _f () {}
                 },
-                errors: 9
+                errors: 8
             }
             /* jshint ignore:end *//* jscs: enable */
         ]);
@@ -248,7 +247,6 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                      * @param {Number}
                      * @param {String}
                      * @param {Boolean}
-                     * @param {Null}
                      * @param {Array}
                      * @param {Object}
                      * @param {Date}
@@ -260,7 +258,7 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                 it: 'should not report joined native types',
                 code: function() {
                     /**
-                     * @param {Number|String|Boolean|Null|Array|Object|Date}
+                     * @param {Number|String|Boolean|Array|Object|Date}
                      */
                     function _f () {}
                 }
@@ -288,10 +286,10 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                 }
             }, {
                 it: 'should report joined lowercased natives',
-                errors: 7,
+                errors: 6,
                 code: function() {
                     /**
-                     * @param {number|string|boolean|null}
+                     * @param {number|string|boolean}
                      * @param {array|object|date}
                      */
                     function _f () {}
@@ -300,11 +298,11 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                 it: 'should report joined strict wrong cased natives',
                 code: function() {
                     /**
-                     * @param {number|string|boolean|null|array|object|date|regexp|function}
+                     * @param {number|string|boolean|array|object|date|regexp|function}
                      */
                     function _f () {}
                 },
-                errors: 9
+                errors: 8
             }
             /* jshint ignore:end *//* jscs: enable */
         ]);
