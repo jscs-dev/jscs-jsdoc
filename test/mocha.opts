@@ -1,5 +1,6 @@
 test/*test*.js test/lib/
 --recursive
 --require test/init.js
+--timeout 6000
 -R dot
 -u bdd
