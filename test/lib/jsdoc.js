@@ -131,11 +131,14 @@ describe('jsdoc', function() {
                 ' * @param {Type} some long\n' +
                 ' *   description of param\n' +
                 ' * @abstract\n' +
+                ' * @example\n' +
+                ' * // use this anywhere\n' +
+                ' * makeFun(value, some);\n' +
                 ' */', {start: {line: 5, column: 2}});
         });
 
         it('should parses comment and create all tags and types', function() {
-            expect(c1.tags.length).to.eq(3);
+            expect(c1.tags.length).to.eq(4);
 
             var tag1 = c1.tags[0];
             expect(tag1.id).to.eq('tag1');
@@ -154,6 +157,12 @@ describe('jsdoc', function() {
             var abs = c1.tags[2];
             expect(abs.id).to.eq('abstract');
             expect(abs.loc).to.eql(new Location(11, 5));
+
+            var example = c1.tags[3];
+            expect(example.id).to.eq('example');
+            expect(example.type).to.eq(undefined);
+            expect(example.name).to.eq(undefined);
+            expect(example.description).to.eq('// use this anywhere\nmakeFun(value, some);');
         });
 
     });

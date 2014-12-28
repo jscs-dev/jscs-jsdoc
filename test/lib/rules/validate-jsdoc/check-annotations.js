@@ -39,6 +39,17 @@ describe('lib/rules/validate-jsdoc/check-annotations', function() {
                 code: function() {
                     /** @access */
                 }
+            },
+            {
+                it: 'should not throw example tag',
+                errors: [],
+                code: function() {
+                    /**
+                     * @example
+                     * // some sample comment
+                     * aFunctionSampleCall({a:1, b:2, c:3, e:null}, {a:4, d:5}, {b:6, c:7});
+                    */
+                }
             }
             /* jshint ignore:end */
         ]);
@@ -73,7 +84,7 @@ describe('lib/rules/validate-jsdoc/check-annotations', function() {
             'preset': 'jsdoc3',
             'extra': {
                 'empty': false,
-                'fulfilled': true
+                'fulfilled': 'some'
             }
         }});
 
@@ -115,7 +126,7 @@ describe('lib/rules/validate-jsdoc/check-annotations', function() {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should throw',
+                it: 'arg, argument tags should throw',
                 errors: 2,
                 code: function() {
                     /**
