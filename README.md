@@ -384,7 +384,7 @@ function method() {}
 
 Reports invalid types for bunch of tags
 
-In `strictNativeCase` mode ensures that case of natives is the same as in this list: `boolean`, `number`, `string`, `null`, `Object`, `Array`, `Date`, `RegExp`.
+In `strictNativeCase` mode ensures that case of natives is the same as in this list: `boolean`, `number`, `string`, `Object`, `Array`, `Date`, `RegExp`.
 
 In `capitalizedNativeCase` mode ensures that first letter in all native types and primitives is uppercased except the case with `function` in google closure format: `{function(...)}`
 
