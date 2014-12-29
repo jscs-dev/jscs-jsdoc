@@ -148,7 +148,49 @@ function _f() {}
 /** @still-invalid */
 ```
 
-####
+### checkParamExistence
+
+Ensures all parameters are documented.
+
+Type: `Boolean`
+
+Values: `true`
+
+
+#### Example
+
+```js
+"checkParamExistence": true
+```
+
+##### Valid
+
+```js
+/**
+ * @param {string} message
+ * @return {string}
+ */
+function _f ( message ) {
+  return true;
+}
+
+/**
+ * @inheritdoc
+ */
+function _f ( message ) {
+  return true;
+}
+```
+
+##### Invalid
+
+```js
+/**
+ * @return {string}
+ */
+function _f ( message ) {
+  return true;
+}
 
 ### checkParamNames
 
