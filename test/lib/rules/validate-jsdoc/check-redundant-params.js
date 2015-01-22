@@ -115,6 +115,66 @@ describe('lib/rules/validate-jsdoc/check-redundant-params', function () {
                      */
                     function setTimeout(callback, delay) {}
                 }
+            }, {
+                // issue #79
+                it: 'should not report different names',
+                code: function() {
+                    /**
+                     * Example function
+                     * @param {Object} options - some options
+                     * @param {number} options.id - some id
+                     * @param {Array} rest - rest arguments
+                     */
+                    function hello(options, rest) {
+                        return (options.filename) ? true : false;
+                    }
+                },
+                errors: []
+            }, {
+                // issue #79
+                it: 'should report with right location',
+                code: function() {
+                    /**
+                     * @param {Object} options - some options
+                     * @param {Array} rest - rest arguments
+                     */
+                    function hello(options) {
+                    }
+                },
+                errors: [{
+                    column: 3, line: 3, filename: 'input', rule: 'jsDoc',
+                    message: 'Found redundant param "rest" statement'
+                }]
+            }, {
+                it: 'should not report optional params',
+                code: function() {
+                    /**
+                     * Example function
+                     * @param {Object} options - some options
+                     * @param {number} options.id - some id
+                     * @param {Go} [optional] - optional param
+                     * @param {Go=} optional2 - another optional param
+                     * @param {Array} rest - rest arguments
+                     */
+                    function hello(options, rest) {
+                    }
+                },
+                errors: []
+            }, {
+                it: 'should not report declared optional params',
+                code: function() {
+                    /**
+                     * Example function
+                     * @param {Object} options - some options
+                     * @param {number} options.id - some id
+                     * @param {Go} [optional] - optional param
+                     * @param {Go=} optional2 - another optional param
+                     * @param {Array} rest - rest arguments
+                     */
+                    function hello(options, optional, optional2, rest) {
+                    }
+                },
+                errors: []
             }
             /* jshint ignore:end */
         ]);
