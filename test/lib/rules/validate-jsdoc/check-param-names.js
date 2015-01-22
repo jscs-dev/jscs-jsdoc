@@ -340,6 +340,21 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     module.exports.createMiddleware = function() { /* ... */ };
                 },
                 errors: []
+            }, {
+                it: 'should not report declared optional params',
+                code: function() {
+                    /**
+                     * Example function
+                     * @param {Object} options - some options
+                     * @param {number} options.id - some id
+                     * @param {Go} [optional] - optional param
+                     * @param {Go=} optional2 - another optional param
+                     * @param {Array} rest - rest arguments
+                     */
+                    function hello(options, optional, optional2, rest) {
+                    }
+                },
+                errors: []
             }
             /* jscs: enable */
             /* jshint ignore:end */
