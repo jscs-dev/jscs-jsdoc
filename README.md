@@ -456,9 +456,9 @@ var x = 1;
 
 Reports redundant access declarations
 
-Type: `Boolean`
+Type: `Boolean` or `String`
 
-Values: `true`
+Values: `true` or `"enforceLeadingUnderscore"` or `"enforceTrailingUnderscore"`
 
 Context: `functions`
 
@@ -468,23 +468,38 @@ Tags: `access`, `private`, `protected`, `public`
 
 ```js
 "checkRedundantAccess": true
+"checkRedundantAccess": "enforceLeadingUnderscore"
 ```
 
-##### Valid
+##### Valid for true, "enforceLeadingUnderscore"
 
 ```js
 /**
  * @access private
  */
 function _f() {}
+
+/**
+ * @access public
+ */
+function f() {}
 ```
 
-##### Invalid
+##### Invalid for true
 
 ```js
 /**
  * @private
  * @access private
+ */
+function _f() {}
+```
+
+##### Invalid for "enforceLeadingUnderscore"
+
+```js
+/**
+ * @private
  */
 function _f() {}
 ```
@@ -506,7 +521,7 @@ Tags: `access`, `private`, `protected`, `public`
 #### Example
 
 ```js
-"checkRedundantAccess": "protected"
+"leadingUnderscoreAccess": "protected"
 ```
 
 ##### Valid

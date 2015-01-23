@@ -72,4 +72,86 @@ describe('lib/rules/validate-jsdoc/check-redundant-access', function () {
 
     });
 
+    describe('with enforceLeadingUnderscore ', function() {
+        checker.rules({checkRedundantAccess: 'enforceLeadingUnderscore'});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report valid jsdoc',
+                code: function () {
+                    /**
+                     * @access protected
+                     */
+                    function _funcName(p) {}
+                },
+                errors: []
+            }, {
+                it: 'should not force publics',
+                code: function () {
+                    /**
+                     * @access public
+                     */
+                    function funcName(p) {}
+                },
+                errors: []
+            }, {
+                it: 'should report missing leading underscore',
+                code: function () {
+                    /**
+                     * @access protected
+                     */
+                    function funcName(p) {}
+                },
+                errors: [{
+                    line: 4, column: 9, filename: 'input', rule: 'jsDoc',
+                    message: 'Missing leading underscore for funcName'
+                }]
+            }
+            /* jshint ignore:end */
+        ]);
+
+    });
+
+    describe('with enforceTrailingUnderscore', function() {
+        checker.rules({checkRedundantAccess: 'enforceTrailingUnderscore'});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report valid jsdoc',
+                code: function () {
+                    /**
+                     * @access protected
+                     */
+                    function funcName_(p) {}
+                },
+                errors: []
+            }, {
+                it: 'should not force publics',
+                code: function () {
+                    /**
+                     * @access public
+                     */
+                    function funcName(p) {}
+                },
+                errors: []
+            }, {
+                it: 'should report missing leading underscore',
+                code: function () {
+                    /**
+                     * @access protected
+                     */
+                    function funcName(p) {}
+                },
+                errors: [{
+                    line: 4, column: 9, filename: 'input', rule: 'jsDoc',
+                    message: 'Missing trailing underscore for funcName'
+                }]
+            }
+            /* jshint ignore:end */
+        ]);
+
+    });
+
 });
