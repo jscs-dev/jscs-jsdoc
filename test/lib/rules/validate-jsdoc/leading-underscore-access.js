@@ -94,9 +94,9 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                     function _funcName(p) {}
                 },
                 errors: [{
-                    line: 6,
-                    column: 0,
-                    message: 'Method access doesn\'t match',
+                    line: 9,
+                    column: 9,
+                    message: 'Missing access tag for _funcName',
                     rule: 'jsDoc',
                     filename: 'input'
                 }]
@@ -180,7 +180,27 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                      */
                     var _pubFuncWithUnderscore = function (p) {};
                 },
-                errors: 2
+                errors: [{
+                    column: 3, line: 2, filename: 'input', rule: 'jsDoc',
+                    message: 'Method access doesn\'t match'
+                }, {
+                    column: 3, line: 7, filename: 'input', rule: 'jsDoc',
+                    message: 'Method access doesn\'t match'
+                }]
+            }, {
+                it: 'should not report standard idendifiers',
+                rules: {leadingUnderscoreAccess: 'protected'},
+                code: function () {
+                    /**
+                     * @access private
+                     */
+                    var super_ = function (p) {};
+
+                    /**
+                     * @access public
+                     */
+                    var __proto__ = function (p) {};
+                }
             }
             /* jshint ignore:end */
         ]);

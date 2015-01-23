@@ -493,6 +493,8 @@ function _f() {}
 
 Ensures access declaration is set for `_underscored` function names
 
+Ignores a bunch of popular identifiers: `__filename`, `__dirname`, `__proto__`, `__defineGetter__`, `super_`, `__constructor`, etc.
+
 Type: `Boolean` or `String`
 
 Values: `true` (means not public), `"private"`, `"protected"`
