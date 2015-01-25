@@ -23,8 +23,8 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "comment-parser": "zxqfox/comment-parser#jscs-jsdoc",
-    "jsdoctypeparser": "^1.1.3"
+    "comment-parser": "0.2.4",
+    "jsdoctypeparser": "^1.1.4"
   },
   "devDependencies": {
     "chai": "^1.10.0",
