@@ -107,6 +107,15 @@ describe('lib/rules/validate-jsdoc/check-redundant-access', function () {
                     line: 4, column: 9, filename: 'input', rule: 'jsDoc',
                     message: 'Missing leading underscore for funcName'
                 }]
+            }, {
+                it: 'should not force unknown access',
+                code: function () {
+                    /**
+                     * No access
+                     */
+                    function funcName(p) {}
+                },
+                errors: []
             }
             /* jshint ignore:end */
         ]);
