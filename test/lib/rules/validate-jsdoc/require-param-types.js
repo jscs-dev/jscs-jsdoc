@@ -101,6 +101,20 @@ describe('lib/rules/validate-jsdoc/require-param-types', function () {
                         }
                     };
                 }
+            }, {
+                // #86
+                it: 'should report with right location',
+                code: function () {
+                    Cls.prototype = {
+                        /**
+                         * @param {} xxx
+                         */
+                        run: function(xxx) {
+                            // dummy
+                        }
+                    };
+                },
+                errors: {column: 17, line: 3}
             }
             /* jshint ignore:end */
         ]);
