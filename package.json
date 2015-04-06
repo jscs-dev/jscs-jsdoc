@@ -27,10 +27,10 @@
     "jsdoctypeparser": "^1.1.4"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "jscs": "^1.8.0",
-    "jshint": "^2.5.10",
-    "mocha": "^2.0.1"
+    "chai": "^2.2.0",
+    "jscs": "^1.12.0",
+    "jshint": "^2.6.3",
+    "mocha": "^2.2.1"
   },
   "_peerDependencies": {
     "jscs": ">=1.8.0 <2.0"
