@@ -367,4 +367,61 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
 
     });
 
+
+    describe('with destructurings', function() {
+        var checker = global.checker({
+            plugins: ['./lib/index'],
+            esnext: true
+        });
+        checker.rules({checkParamNames: true});
+
+        checker.cases([
+            /* jshint ignore:start */
+            // jscs:disable
+            {
+                it: 'should not report missing parameter name for object destructurings',
+                code: [
+                    '/**',
+                    ' * @param {object}',
+                    ' */',
+                    'function obj({param}) {',
+                    '}'
+                ].join('\n')
+            }, {
+                it: 'should not report missing parameter name for object destructurings',
+                code: [
+                    '/**',
+                    ' * @param {object}',
+                    ' */',
+                    'function obj({param: newName}) {',
+                    '}'
+                ].join('\n')
+            }, {
+                it: 'should not report an error when used next to parameters with properties',
+                code: [
+                    '/**',
+                    ' * @param {object} obj1',
+                    ' * @param {string} obj1.property',
+                    ' * @param {object}',
+                    ' * @param {object} obj2',
+                    ' * @param {string} obj2.property',
+                    ' */',
+                    'function obj(obj1, {param}, obj2) {',
+                    '}'
+                ].join('\n')
+            }, {
+                it: 'should not report missing parameter name for array destructurings',
+                code: [
+                    '/**',
+                    ' * @param {array}',
+                    ' */',
+                    'function arr([param]) {',
+                    '}'
+                ].join('\n')
+            }
+            // jscs:enable
+            /* jshint ignore:end */
+        ]);
+
+    });
 });
