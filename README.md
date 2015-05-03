@@ -2,6 +2,7 @@
 [![Gitter](https://img.shields.io/badge/GITTER-JOIN_CHAT_%E2%86%92-1dce73.svg)](https://gitter.im/jscs-dev/talks?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://img.shields.io/travis/jscs-dev/jscs-jsdoc.svg)](http://travis-ci.org/jscs-dev/jscs-jsdoc?style=flat)
 [![Dependency Status](https://img.shields.io/david/jscs-dev/jscs-jsdoc.svg)](https://david-dm.org/jscs-dev/jscs-jsdoc)
+[![Coverage](https://img.shields.io/coveralls/jscs-dev/jscs-jsdoc.svg)](https://coveralls.io/r/jscs-dev/jscs-jsdoc)
 
 [![NPM version](https://img.shields.io/npm/v/jscs-jsdoc.svg)](https://www.npmjs.com/package/jscs-jsdoc)
 [![NPM downloads](https://img.shields.io/npm/dm/jscs-jsdoc.svg)](https://www.npmjs.com/package/jscs-jsdoc)
