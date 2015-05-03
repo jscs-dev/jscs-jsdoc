@@ -127,6 +127,7 @@ describe('jsdoc', function() {
                 '/**\n' +
                 ' * Description\n' +
                 ' *   with a new line\n' +
+                ' *\n' +
                 ' * @tag1 value\n' +
                 ' * @param {Type} some long\n' +
                 ' *   description of param\n' +
@@ -138,25 +139,26 @@ describe('jsdoc', function() {
         });
 
         it('should parses comment and create all tags and types', function() {
+            expect(c1.description).to.eq('Description\n  with a new line\n');
             expect(c1.tags.length).to.eq(4);
 
             var tag1 = c1.tags[0];
             expect(tag1.id).to.eq('tag1');
-            expect(tag1.loc).to.eql(new Location(8, 5));
+            expect(tag1.loc).to.eql(new Location(9, 5));
             expect(tag1.name.value).to.eq('value');
-            expect(tag1.name.loc).to.eql(new Location(8, 11));
+            expect(tag1.name.loc).to.eql(new Location(9, 11));
 
             var param = c1.tags[1];
             expect(param.id).to.eq('param');
-            expect(param.loc).to.eql(new Location(9, 5));
+            expect(param.loc).to.eql(new Location(10, 5));
             expect(param.type.value).to.eq('Type');
-            expect(param.type.loc).to.eql(new Location(9, 13));
+            expect(param.type.loc).to.eql(new Location(10, 13));
             expect(param.name.value).to.eq('some');
-            expect(param.name.loc).to.eql(new Location(9, 19));
+            expect(param.name.loc).to.eql(new Location(10, 19));
 
             var abs = c1.tags[2];
             expect(abs.id).to.eq('abstract');
-            expect(abs.loc).to.eql(new Location(11, 5));
+            expect(abs.loc).to.eql(new Location(12, 5));
 
             var example = c1.tags[3];
             expect(example.id).to.eq('example');
