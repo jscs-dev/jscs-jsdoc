@@ -30,6 +30,7 @@
         "checkRedundantReturns": true,
         "requireReturnTypes": true,
         "checkTypes": "strictNativeCase",
-        "checkRedundantAccess": true
+        "checkRedundantAccess": true,
+        "requireNewlineAfterDescription": true
     }
 }

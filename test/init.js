@@ -9,7 +9,8 @@ global.checker = rulesChecker;
 global.expect = expect;
 
 /**
- * parses body of function
+ * Parses body of function
+ *
  * @param {Function} func
  * @returns {string} body of func
  */
@@ -41,6 +42,7 @@ function fnBody(func) {
 
 /**
  * Testing helper object
+ *
  * @param {Object} opts default options for jscs string checker
  * @returns {{rules: function(Object),
  *   configure: function(Object),
@@ -60,7 +62,8 @@ function rulesChecker(opts) {
 
     return {
         /**
-         * set rules for each case (beforeEach wrapper)
+         * Set rules for each case (beforeEach wrapper)
+         *
          * @param {Object} rules
          */
         rules: function(rules) {
@@ -70,7 +73,8 @@ function rulesChecker(opts) {
         },
 
         /**
-         * set rules immediately
+         * Set rules immediately
+         *
          * @param {Object} rules
          */
         configure: function(rules) {
@@ -78,7 +82,8 @@ function rulesChecker(opts) {
         },
 
         /**
-         * describe cases (wrapper for mocha it calls)
+         * Describe cases (wrapper for mocha it calls)
+         *
          * @param {Array.<{it: string, code: Function, ?rules: Object, ?errors: *, ?skip: boolean}>} items
          */
         cases: function(items) {
