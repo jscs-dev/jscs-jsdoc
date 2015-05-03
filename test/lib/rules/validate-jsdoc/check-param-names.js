@@ -367,7 +367,6 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
 
     });
 
-
     describe('with destructurings', function() {
         var checker = global.checker({
             plugins: ['./lib/index'],
@@ -397,6 +396,45 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     '}'
                 ].join('\n')
             }, {
+                it: 'should not fail if a fake parameter name is provided',
+                code: [
+                    '/**',
+                    ' * @param {object} fakeName - description',
+                    ' */',
+                    'function obj({param}) {',
+                    '}'
+                ].join('\n')
+            }, {
+                it: 'should not fail if a fake parameter name and property description is provided',
+                code: [
+                    '/**',
+                    ' * @param {object} fakeName - description',
+                    ' * @param {object} fakeName.param - description',
+                    ' */',
+                    'function obj({param}) {',
+                    '}'
+                ].join('\n')
+            }, {
+                it: 'should report different fake parameter name',
+                code: [
+                    '/**',
+                    ' * @param {object} fakeName - description',
+                    ' * @param {object} notFakeName.param - description',
+                    ' */',
+                    'function obj({param}) {',
+                    '}'
+                ].join('\n'),
+                errors: [
+                    {
+                        column: 19,
+                        filename: 'input',
+                        line: 3,
+                        message: 'Expected `fakeName` but got `notFakeName`',
+                        rule: 'jsDoc',
+                        fixed: undefined
+                    }
+                ]
+            }, {
                 it: 'should not report an error when used next to parameters with properties',
                 code: [
                     '/**',
@@ -424,4 +462,5 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
         ]);
 
     });
+
 });
