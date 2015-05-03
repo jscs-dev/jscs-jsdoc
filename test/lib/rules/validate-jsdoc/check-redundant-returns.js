@@ -79,6 +79,15 @@ describe('lib/rules/validate-jsdoc/check-redundant-returns', function () {
                         });
                     }
                 }
+            }, {
+                it: 'should not report for abstract methods',
+                code: function () {
+                    /**
+                     * @abstract
+                     * @return {number}
+                     */
+                    function onEvent () {}
+                }
             }
             /* jshint ignore:end */
         ]);
