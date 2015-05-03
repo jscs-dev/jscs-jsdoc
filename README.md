@@ -6,7 +6,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/jscs-jsdoc.svg)](https://www.npmjs.com/package/jscs-jsdoc)
 [![NPM downloads](https://img.shields.io/npm/dm/jscs-jsdoc.svg)](https://www.npmjs.com/package/jscs-jsdoc)
-[![MIT License](https://img.shields.io/npm/l/jscs-jsdoc.svg)](https://github.com/jscs-dev/jscs-jsdoc/blob/master/LICENSExc)
+[![MIT License](https://img.shields.io/npm/l/jscs-jsdoc.svg)](https://github.com/jscs-dev/jscs-jsdoc/blob/master/LICENSE)
 
 `jsdoc` plugin for [jscs](https://github.com/jscs-dev/node-jscs/). [Twitter](https://twitter.com/jscs_dev) | [Mailing List](https://groups.google.com/group/jscs-dev)
 
@@ -615,6 +615,107 @@ function method() {}
  */
 function method() {}
 ```
+
+
+### requireNewlineAfterDescription
+
+Ensures a doc comment description has padding newline
+
+Type: `Boolean`
+
+Values: `true`
+
+Context: `functions`
+
+Tags: `*`
+
+#### Example
+
+```js
+"requireNewlineAfterDescription": true
+```
+
+##### Valid
+
+```js
+/**
+ * @param {String} - message
+ */
+function method() {}
+
+/**
+ * Description
+ */
+function method() {}
+
+/**
+ * Description
+ *
+ * @param {String} - message
+ */
+function method() {}
+```
+
+##### Invalid
+
+```js
+/**
+ * Description
+ * @param {String} message
+ */
+function method() {}
+```
+
+
+### disallowNewlineAfterDescription
+
+Ensures a doc comment description has no padding newlines
+
+Type: `Boolean`
+
+Values: `true`
+
+Context: `functions`
+
+Tags: `*`
+
+#### Example
+
+```js
+"disallowNewlineAfterDescription": true
+```
+
+##### Valid
+
+```js
+/**
+ * @param {String} - message
+ */
+function method() {}
+
+/**
+ * Description
+ */
+function method() {}
+
+/**
+ * Description
+ * @param {String} - message
+ */
+function method() {}
+```
+
+##### Invalid
+
+```js
+/**
+ * Description
+ *
+ * @param {String} message
+ */
+function method() {}
+```
+
 
 ## Browser Usage
 
