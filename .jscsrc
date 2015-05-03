@@ -1,6 +1,8 @@
 {
+    "plugins": ["jscs-jsdoc"],
     "preset": "google",
-    "fileExtensions": [ ".js", "jscs" ],
+
+    "fileExtensions": [ ".js", ".jscs" ],
 
     "requireParenthesesAroundIIFE": true,
     "maximumLineLength": 120,
@@ -17,8 +19,6 @@
       "test/data/**",
       "test/lib/rules/**"
     ],
-
-    "plugins": ["jscs-jsdoc"],
 
     "jsDoc": {
         "enforceExistence": true,
