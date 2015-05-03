@@ -91,7 +91,7 @@ Tags: `*`
 - `true` means tag available with any value
 - `"some"` means tag available and requires some value
 
-See also [tag presets](https://github.com/jscs-dev/jscs-jsdoc/tree/hotfix/check-annotations-rework/lib/tags).
+See also [tag presets](https://github.com/jscs-dev/jscs-jsdoc/tree/master/lib/tags).
 
 #### Example
 
