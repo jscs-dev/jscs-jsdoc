@@ -41,13 +41,14 @@ function fnBody(func) {
 }
 
 /**
+ * @typedef {{it: string, code: Function, rules: ?Object, errors: *, skip: ?boolean}} TestCase
+ */
+
+/**
  * Testing helper object
  *
  * @param {Object} opts default options for jscs string checker
- * @returns {{rules: function(Object),
- *   configure: function(Object),
- *   cases: function(Array.<TestCase{it: string, code: Function, ?rules: Object, ?errors: *, ?skip: boolean}>),
- *   check: function(string)}}
+ * @returns {{rules:function(Object), configure:function(Object), cases:function(TestCase[]), check:function(string)}}
  */
 function rulesChecker(opts) {
     var checker;
@@ -84,7 +85,7 @@ function rulesChecker(opts) {
         /**
          * Describe cases (wrapper for mocha it calls)
          *
-         * @param {Array.<{it: string, code: Function, ?rules: Object, ?errors: *, ?skip: boolean}>} items
+         * @param {TestCase[]} items
          */
         cases: function(items) {
             items = items || [];

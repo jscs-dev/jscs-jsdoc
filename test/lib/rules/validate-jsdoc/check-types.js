@@ -135,7 +135,7 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                     /**
                      * @param {Obj+ect} q
                      * @param {Num/ber} w
-                     * @return {Str~ing}
+                     * @return {Str-ing}
                      */
                     ClsName.prototype.point = function (q, w) {
                     }
