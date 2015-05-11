@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [unreleased]
+
+### Misc
+
+* [[`cf2aff91c2`](https://github.com/iojs/io.js/commit/cf2aff91c2)] - **Misc**: bump jsdoctypeparser to use new PEG parser (Alexej Yaroshevich)
+
+
 ## [v1.0.1] - 2015-05-11
 
 Fixing version for jsdoctypeparser to prevent unexpected reports for some non-standard declarations.
@@ -379,6 +386,8 @@ Initial functionality imported from JSCS
 * [[`49fc5825d7`](https://github.com/jscs-dev/jscs-jsdoc/commit/49fc5825d7)] - initial functionality (Alexej Yaroshevich)
 
 
+[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.1...HEAD
+[v1.0.1]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v0.4.6...v1.0.0
 [v0.4.6]: https://github.com/jscs-dev/jscs-jsdoc/compare/v0.4.5...v0.4.6
 [v0.4.5]: https://github.com/jscs-dev/jscs-jsdoc/compare/v0.4.4...v0.4.5
