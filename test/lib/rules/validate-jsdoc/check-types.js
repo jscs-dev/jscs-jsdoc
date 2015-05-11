@@ -128,14 +128,25 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                     ClsName.prototype.point = function (q, w) {
                     }
                 }
-            }, {
+            }
+            /* jshint ignore:end *//* jscs: enable */
+        ]);
+    });
+
+    describe('regressions with true', function() {
+        checker.rules({checkTypes: true});
+
+        checker.cases([
+            /* jshint ignore:start *//* jscs: disable */
+            {
                 it: 'should report invalid types in params and returns',
-                errors: 3,
+                errors: 4,
                 code: function() {
                     /**
                      * @param {Obj+ect} q
                      * @param {Num/ber} w
-                     * @return {Str~ing}
+                     * @param {Str-ing} [e]
+                     * @return {Str ing}
                      */
                     ClsName.prototype.point = function (q, w) {
                     }
@@ -154,6 +165,24 @@ describe('lib/rules/validate-jsdoc/check-types', function() {
                         }
                         return t;
                     }
+                }
+            }, {
+                it: 'should not report modules nor minuses inside module names. issue #88',
+                code: function () {
+                    /**
+                     * @param {?module:my_pants-on/me.Jeans#hem} foo
+                     * @param {?module: .a_B/c-d~e.f0} bar
+                     */
+                    function baz() {}
+                }
+            }, {
+                it: 'should not report 2+d arrays',
+                code: function () {
+                    /**
+                     * @param {?obj[][]} foo
+                     * @param {?obj[][][]} bar
+                     */
+                    function baz() {}
                 }
             }
             /* jshint ignore:end *//* jscs: enable */

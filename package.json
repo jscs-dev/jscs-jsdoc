@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "comment-parser": "0.3.0",
-    "jsdoctypeparser": "1.1.4"
+    "jsdoctypeparser": "~1.2.0"
   },
   "devDependencies": {
     "chai": "^2.3.0",
