@@ -31,7 +31,6 @@
         "requireReturnTypes": true,
         "checkTypes": "strictNativeCase",
         "checkRedundantAccess": true,
-        "requireNewlineAfterDescription": true,
-        "requireDescriptionCompleteSentence": true
+        "requireNewlineAfterDescription": true
     }
 }
