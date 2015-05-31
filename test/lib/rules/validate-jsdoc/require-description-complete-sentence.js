@@ -50,6 +50,20 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     line: 2,
                     column: 18
                 },
+                it: 'should report missing period at end of multi line description',
+                code: function () {
+                    /**
+                     * Some description
+                     * That takes up multiple lines
+                     * @param {number} p description without hyphen
+                     */
+                    function fun(p) {
+                    }
+                },
+                errors: {
+                    line: 3,
+                    column: 30
+                },
             }, {
                 it: 'should report missing upper case at beginning of description',
                 code: function () {
