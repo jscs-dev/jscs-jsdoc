@@ -716,6 +716,84 @@ function method() {}
 function method() {}
 ```
 
+### requireDescriptionCompleteSentence
+
+Ensures a doc comment description is a complete sentence.
+
+A complete sentence is defined as starting with an upper case letter and ending with a period.
+
+Type: `Boolean`
+
+Values: `true`
+
+Context: `functions`
+
+Tags: `*`
+
+#### Example
+
+```js
+"requireDescriptionCompleteSentence": true
+```
+
+##### Valid
+
+```js
+/**
+ * @param {String} - message
+ */
+function method() {}
+
+/**
+ * Description.
+ */
+function method() {}
+
+/**
+ * Description.
+ *
+ * @param {String} - message
+ */
+function method() {}
+
+/**
+ * Description
+ * On multiple lines.
+ *
+ * @param {String} - message
+ */
+function method() {}
+```
+
+##### Invalid
+
+```js
+/**
+ * Description
+ * @param {String} message
+ */
+function method() {}
+
+/**
+ * description starting with a lower case letter.
+ * @param {String} message
+ */
+function method() {}
+
+/**
+ * Description period is offset .
+ * @param {String} message
+ */
+function method() {}
+
+/**
+ * Description!
+ * @param {String} message
+ */
+function method() {}
+```
+
+
 
 ## Browser Usage
 
