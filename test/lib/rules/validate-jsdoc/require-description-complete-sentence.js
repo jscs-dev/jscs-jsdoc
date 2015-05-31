@@ -86,7 +86,7 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                 },
                 errors: 1
             }, {
-                it: 'should not missing period',
+                it: 'should not report missing period',
                 code: function () {
                     /**
                      * Some description
@@ -94,8 +94,7 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                      * @param {number} p description without hyphen
                      */
                     function fun(p) {}
-                },
-                errors: 1
+                }
             }
             /* jshint ignore:end */
         ]);
