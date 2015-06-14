@@ -5,9 +5,16 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
-### Misc
+### New rules
+* [[`152ab67a91`](https://github.com/jscs-dev/jscs-jsdoc/commit/152ab67a91)] - New rule: requireDescriptionCompleteSentence (dtracers)
 
-* [[`cf2aff91c2`](https://github.com/iojs/io.js/commit/cf2aff91c2)] - **Misc**: bump jsdoctypeparser to use new PEG parser (Alexej Yaroshevich)
+### Docs
+* [[`9e56f72b88`](https://github.com/jscs-dev/jscs-jsdoc/commit/9e56f72b88)] - **Docs**: Add requireDescriptionCompleteSentence to readme. (dtracers)
+* [[`a34608a22b`](https://github.com/jscs-dev/jscs-jsdoc/commit/a34608a22b)] - **Docs**: update changelog, fix broken link (Alexej Yaroshevich)
+
+### Misc
+* [[`cf2aff91c2`](https://github.com/jscs-dev/jscs-jsdoc/commit/cf2aff91c2)] - **Misc**: bump jsdoctypeparser to use new PEG parser (Alexej Yaroshevich)
+* [[`544cf7d7cb`](https://github.com/jscs-dev/jscs-jsdoc/commit/544cf7d7cb)] - **Misc**: add changelog npm command (Alexej Yaroshevich)
 
 
 ## [v1.0.1] - 2015-05-11
