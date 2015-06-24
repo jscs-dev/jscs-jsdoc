@@ -716,6 +716,7 @@ function method() {}
 function method() {}
 ```
 
+
 ### requireDescriptionCompleteSentence
 
 Ensures a doc comment description is a complete sentence.
@@ -793,6 +794,51 @@ function method() {}
 function method() {}
 ```
 
+
+### requireParamDescription
+
+Ensures a param description exists.
+
+Type: `Boolean`
+
+Values: `true`
+
+Context: `functions`
+
+Tags: `param`, `arg`, `argument`
+
+#### Example
+
+```js
+"requireParamDescription": true
+```
+
+##### Valid
+
+```js
+/**
+ * @param {String} arg message
+ */
+function method(arg) {}
+
+/**
+ * @param arg message
+ */
+function method(arg) {}
+
+##### Invalid
+
+```js
+/**
+ * @param {String} arg
+ */
+function method(arg) {}
+
+/**
+ * @param arg
+ */
+function method(arg) {}
+```
 
 
 ## Browser Usage
