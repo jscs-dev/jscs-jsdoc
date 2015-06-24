@@ -202,6 +202,28 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                      */
                     var __proto__ = function (p) {};
                 }
+            }, {
+                it: 'should not report overriden methods. #114',
+                rules: {leadingUnderscoreAccess: 'private'},
+                code: function () {
+                    /**
+                     * @override
+                     */
+                    function _funcName(p) {
+                    }
+                }
+            }, {
+                it: 'should report overriden with wrong @access value. #114',
+                rules: {leadingUnderscoreAccess: 'private'},
+                code: function () {
+                    /**
+                     * @override
+                     * @protected
+                     */
+                    function _funcName(p) {
+                    }
+                },
+                errors: 1
             }
             /* jshint ignore:end */
         ]);
