@@ -5,16 +5,25 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+## [v1.1.0] - 2015-06-24
+
 ### New rules
 * [[`152ab67a91`](https://github.com/jscs-dev/jscs-jsdoc/commit/152ab67a91)] - New rule: requireDescriptionCompleteSentence (dtracers)
+* [[`bf19a6c34c`](https://github.com/jscs-dev/jscs-jsdoc/commit/bf19a6c34c)] - New rule: requireParamDescription (dtracers)
+
+### Bug fixes
+* [[`79e316c2f2`](https://github.com/jscs-dev/jscs-jsdoc/commit/79e316c2f2)] - **leadingUnderscoreAccess**: skip checking for overriden methods #114 (Alexej Yaroshevich)
 
 ### Docs
 * [[`9e56f72b88`](https://github.com/jscs-dev/jscs-jsdoc/commit/9e56f72b88)] - **Docs**: Add requireDescriptionCompleteSentence to readme. (dtracers)
 * [[`a34608a22b`](https://github.com/jscs-dev/jscs-jsdoc/commit/a34608a22b)] - **Docs**: update changelog, fix broken link (Alexej Yaroshevich)
+* [[`abce52aea2`](https://github.com/jscs-dev/jscs-jsdoc/commit/abce52aea2)] - **Docs**: update changelog and fix url (Alexej Yaroshevich)
+* [[`262ce3f3c5`](https://github.com/jscs-dev/jscs-jsdoc/commit/262ce3f3c5)] - **Docs**: add rule requireParamDescription (Alexej Yaroshevich)
 
 ### Misc
 * [[`cf2aff91c2`](https://github.com/jscs-dev/jscs-jsdoc/commit/cf2aff91c2)] - **Misc**: bump jsdoctypeparser to use new PEG parser (Alexej Yaroshevich)
 * [[`544cf7d7cb`](https://github.com/jscs-dev/jscs-jsdoc/commit/544cf7d7cb)] - **Misc**: add changelog npm command (Alexej Yaroshevich)
+* [[`85fba47e7f`](https://github.com/jscs-dev/jscs-jsdoc/commit/85fba47e7f)] - **requireParamTypes**: Change if to early return format (dtracers)
 
 
 ## [v1.0.1] - 2015-05-11
@@ -393,7 +402,8 @@ Initial functionality imported from JSCS
 * [[`49fc5825d7`](https://github.com/jscs-dev/jscs-jsdoc/commit/49fc5825d7)] - initial functionality (Alexej Yaroshevich)
 
 
-[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.1...HEAD
+[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v0.4.6...v1.0.0
 [v0.4.6]: https://github.com/jscs-dev/jscs-jsdoc/compare/v0.4.5...v0.4.6
