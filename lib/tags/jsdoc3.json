@@ -38,6 +38,7 @@
     "ignore": false,
     "inner": false,
     "instance": false,
+    "interface": true,
     "kind": true,
     "lends": true,
     "license": true,
