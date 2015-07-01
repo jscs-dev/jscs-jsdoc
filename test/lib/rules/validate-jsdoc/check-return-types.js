@@ -291,6 +291,16 @@ describe('lib/rules/validate-jsdoc/check-return-types', function () {
                         };
                     };
                 }
+            }, {
+                it: 'should not report on `@returns {Class}` for `new this.*`. issue #115',
+                code: function () {
+                    /**
+                     * @returns {Element}
+                     */
+                    function foo() {
+                        return new this.something();
+                    }
+                }
             }
             /* jshint ignore:end */
         ]);
