@@ -825,6 +825,7 @@ function method(arg) {}
  * @param arg message
  */
 function method(arg) {}
+```
 
 ##### Invalid
 
