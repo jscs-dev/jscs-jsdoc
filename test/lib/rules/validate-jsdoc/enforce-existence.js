@@ -8,15 +8,31 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         it('should report with undefined', function() {
             global.expect(function() {
                 checker.configure({enforceExistence: undefined});
-            }).to.throws(/accepted value/i);
+            }).to.throws(/jsDoc.enforceExistence rule was not configured properly/i);
         });
 
         it('should report with an object', function() {
             global.expect(function() {
-                checker.configure({enforceExistence: {}});
-            }).to.throws(/accepted value/i);
+                checker.configure({enforceExistence: {allExcept: 'something invalid'}});
+            }).to.throws(/jsDoc.enforceExistence rule was not configured properly/i);
         });
 
+    });
+
+    describe('with false', function() {
+        checker.rules({enforceExistence: false});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdocs existence for function',
+                code: function () {
+                    function funcName(p) {
+                    }
+                }
+            }
+            /* jshint ignore:end */
+        ]);
     });
 
     describe('with true', function() {
@@ -138,6 +154,61 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
             /* jshint ignore:start */
             {
                 it: 'should not report jsdocs existence for module.exports anonymous function',
+                code: function () {
+                    module.exports = function () {
+                    };
+                }
+            }
+            /* jshint ignore:end */
+        ]);
+    });
+
+    describe('with allExcept exports', function() {
+        checker.rules({enforceExistence: {allExcept: ['exports']}});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdocs existence for export functions',
+                errors: 0,
+                code: function () {
+                    module.exports = function () {
+                    };
+                }
+            }
+            /* jshint ignore:end */
+        ]);
+    });
+
+    describe('with allExcept expressions', function() {
+        checker.rules({enforceExistence: {allExcept: ['expressions']}});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdocs existence for expression functions',
+                code: function () {
+                    var x = function () {
+                    };
+                }
+            }
+            /* jshint ignore:end */
+        ]);
+    });
+
+    describe('with allExcept exports and expressions', function() {
+        checker.rules({enforceExistence: {allExcept: ['exports', 'expressions']}});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdocs existence for expression functions',
+                code: function () {
+                    var x = function () {
+                    };
+                }
+            }, {
+                it: 'should not report jsdocs existence for export',
                 code: function () {
                     module.exports = function () {
                     };
