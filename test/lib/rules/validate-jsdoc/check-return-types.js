@@ -291,6 +291,18 @@ describe('lib/rules/validate-jsdoc/check-return-types', function () {
                         };
                     };
                 }
+            }, {
+                it: 'should not report with interal arrow function',
+                code: function () {
+                    /**
+                     * @return {?number}
+                     */
+                    function foo() {
+                        return [0,1,2,3]
+                            .filter(v => v < 2)
+                            .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+                    }
+                }
             }
             /* jshint ignore:end */
         ]);
