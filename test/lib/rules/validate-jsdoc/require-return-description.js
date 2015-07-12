@@ -95,7 +95,7 @@ describe('lib/rules/validate-jsdoc/require-return-description', function() {
                         }
                     };
                 },
-                errors: {column: 5, line: 3}
+                errors: {column: 7, line: 3}
             }
             /* jshint ignore:end */
         ]);
