@@ -842,6 +842,54 @@ function method(arg) {}
 ```
 
 
+### requireReturnDescription
+
+Ensures a return description exists.
+
+Type: `Boolean`
+
+Values: `true`
+
+Context: `functions`
+
+Tags: `return`, `returns`
+
+#### Example
+
+```js
+"requireReturnDescription": true
+```
+
+##### Valid
+
+```js
+/**
+ * @returns {Boolean} Method result.
+ */
+function method() {
+  return false;
+}
+
+/**
+ * @returns {String} method result
+ */
+function method() {
+  return 'Hello!';
+}
+```
+
+##### Invalid
+
+```js
+/**
+ * @returns {Boolean}
+ */
+function method() {
+  return false;
+}
+```
+
+
 ## Browser Usage
 
 NOT SUPPORTED ATM. SORRY.
