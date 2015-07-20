@@ -3,21 +3,21 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         plugins: ['./lib/index']
     });
 
-    //describe('not configured', function() {
-    //
-    //    it('should report with undefined', function() {
-    //        global.expect(function() {
-    //            checker.configure({enforceExistence: undefined});
-    //        }).to.throws(/accepted value/i);
-    //    });
-    //
-    //    it('should report with an object', function() {
-    //        global.expect(function() {
-    //            checker.configure({enforceExistence: {}});
-    //        }).to.throws(/accepted value/i);
-    //    });
-    //
-    //});
+    describe('not configured', function() {
+
+        it('should report with undefined', function() {
+            global.expect(function() {
+                checker.configure({enforceExistence: undefined});
+            }).to.throws(/jsDoc.enforceExistence rule was not configured properly/i);
+        });
+
+        it('should report with an object', function() {
+            global.expect(function() {
+                checker.configure({enforceExistence: {allExcept: 'something invalid'}});
+            }).to.throws(/jsDoc.enforceExistence rule was not configured properly/i);
+        });
+
+    });
 
     describe('with false', function() {
         checker.rules({enforceExistence: false});
@@ -169,7 +169,7 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should not report jsdocs existence for module.exports anonymous function',
+                it: 'should not report jsdocs existence for export functions',
                 errors: 0,
                 code: function () {
                     module.exports = function () {
@@ -186,9 +186,28 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should not report jsdocs existence for expressions functions',
+                it: 'should not report jsdocs existence for expression functions',
                 code: function () {
                     var x = function () {
+                    };
+                }
+            }
+            /* jshint ignore:end */
+        ]);
+    });
+
+    describe('with allExcept exports and expressions', function() {
+        checker.rules({enforceExistence: {allExcept: ['exports', 'expressions']}});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdocs existence for both export and expression functions',
+                code: function () {
+                    var x = function () {
+                    };
+
+                    module.exports = function () {
                     };
                 }
             }
