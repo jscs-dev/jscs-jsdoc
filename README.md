@@ -751,6 +751,11 @@ function method() {}
 function method() {}
 
 /**
+ * (Description).
+ */
+function method() {}
+
+/**
  * Description.
  *
  * @param {String} - message
