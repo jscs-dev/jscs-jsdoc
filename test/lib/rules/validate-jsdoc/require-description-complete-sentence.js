@@ -119,7 +119,7 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     function fun(p) {}
                 }
             }, {
-                it: 'should report missing period',
+                it: 'should report trailing white-space',
                 code: function () {
                     /**
                      * Some description .
@@ -129,6 +129,17 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     function fun(p) {}
                 },
                 errors: 1
+            }, {
+                it: 'should not report final non-word characters',
+                code: function () {
+                    /**
+                     * Some `description`.
+                     *
+                     * @param {number} p description without hyphen
+                     */
+                    function fun(p) {}
+                },
+                errors: 0
             }, {
                 it: 'should report missing period at end of first line',
                 code: function () {
