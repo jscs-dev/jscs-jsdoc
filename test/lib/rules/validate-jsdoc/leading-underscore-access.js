@@ -203,6 +203,30 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                     var __proto__ = function (p) {};
                 }
             }, {
+                it: 'should not report private functions. jscs-dev/node-jscs#1588',
+                rules: {leadingUnderscoreAccess: 'private'},
+                code: function () {
+                    /**
+                     * @access private
+                     */
+                    function _super(p) {};
+
+                    /**
+                     * @private
+                     */
+                    function _proto(p) {};
+                }
+            }, {
+                it: 'should not report incorrect jsdoc with right tag. jscs-dev/node-jscs#1588',
+                rules: {leadingUnderscoreAccess: 'private'},
+                code: function() {
+                    /**
+                    * @private
+                    **/
+                    function _yay(yey) {
+                    }
+                }
+            }, {
                 it: 'should not report overriden methods. #114',
                 rules: {leadingUnderscoreAccess: 'private'},
                 code: function () {
