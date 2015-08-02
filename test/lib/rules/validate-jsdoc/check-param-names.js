@@ -463,4 +463,32 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
 
     });
 
+    describe('regression', function() {
+        var checker = global.checker({
+            plugins: ['./lib/index']
+        });
+        checker.rules({checkParamNames: true});
+
+        checker.cases([
+            /* jshint ignore:start */
+            // jscs:disable
+            {
+                it: 'should not report examples from jsdoc-toolkit TagParam (#132)',
+                code: [
+                    '/**',
+                    ' * @param userInfo Information about the user.',
+                    ' * @param userInfo.name The name of the user.',
+                    ' * @param userInfo.email The email of the user.',
+                    ' */',
+                    'function logIn(userInfo) {',
+                    '  doLogIn(userInfo.name, userInfo.email);',
+                    '}'
+                ].join('\n')
+            }
+            // jscs:enable
+            /* jshint ignore:end */
+        ]);
+
+    });
+
 });
