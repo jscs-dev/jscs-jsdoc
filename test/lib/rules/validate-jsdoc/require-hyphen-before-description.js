@@ -55,7 +55,37 @@ describe('lib/rules/validate-jsdoc/require-hyphen-before-description', function 
                     function yey(yay) {
                     }
                 }
-
+            }, {
+                it: 'should not report if description started with newline',
+                code: function () {
+                    /**
+                     * @param {number} yay
+                     * Description without hyphen.
+                     */
+                    function yey(yay) {
+                    }
+                }
+            }, {
+                it: 'should report if description has newline inside',
+                errors: 1,
+                code: function () {
+                    /**
+                     * @param {number} yay Started on the original line
+                     *   without hyphen should be reported.
+                     */
+                    function yey(yay) {
+                    }
+                }
+            }, {
+                it: 'should not report if description has newline inside (with hyphen)',
+                code: function () {
+                    /**
+                     * @param {number} yay - Started on the original line
+                     *   without hyphen should be reported.
+                     */
+                    function yey(yay) {
+                    }
+                }
             }
             /* jshint ignore:end */
         ]);
