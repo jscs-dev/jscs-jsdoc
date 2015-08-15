@@ -552,9 +552,16 @@ function _e() {}
 
 Ensures jsdoc block exist
 
-Type: `Boolean` or `String`
+Type: `Boolean`, `String` or `Object`
 
-Values: `true` or `"exceptExports"` (skip `module.exports = function () {};`)
+Values:
+- `true`
+- `"exceptExports"` (*deprecated* use `"allExcept": ["exports"]`)
+- `Object`:
+  - `"allExcept"` array of exceptions:
+    - `"expressions"` skip expression functions
+    - `"exports"` skip `module.exports = function () {};`
+    - `"paramless-procedures"` functions without parameters and with empty return statements will be skipped
 
 Context: `functions`
 
