@@ -218,4 +218,77 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         ]);
     });
 
+	describe('with allExcept paramless-procedures', function() {
+		checker.rules({enforceExistence: {allExcept: ['paramless-procedures']}});
+
+		checker.cases([
+			/* jshint ignore:start */
+			{
+				it: 'should not report jsdocs absence for function expressions without parameters',
+				code: function () {
+					var functionalExpression = function () {
+					};
+				}
+			}, {
+				it: 'should not report jsdocs absence for function declarations without parameters',
+				code: function () {
+					function func() {
+					}
+				}
+			}, {
+				it: 'should not report jsdocs absence for function expressions with undefined returns',
+				code: function () {
+					var functionalExpression = function () {
+						return;
+					};
+					var functionalExpressionNoReturn = function () {
+                        /** @returns {number}*/
+                        var nestedHasReturn = function () {
+                            return 1;
+                        };
+					};
+				}
+			}, {
+				it: 'should report jsdocs absence for function expressions with defined returns',
+				code: function () {
+					var functionalExpression = function () {
+						return false;
+					};
+                    var functionalExpressionNoReturn = function () {
+                        var nestedHasReturn = function () {
+                            return 1;
+                        };
+                    };
+				},
+				errors: 2
+			}, {
+				it: 'should not report jsdocs absence for function declarations with undefined returns',
+				code: function () {
+					function func() {
+						return;
+					}
+					function noReturn() {
+						/** @returns {number}*/
+						function nestedHasReturn() {
+							return 1;
+						}
+					}
+				}
+			}, {
+				it: 'should report jsdocs absence for function declarations with defined returns',
+				code: function () {
+					function func() {
+						return false;
+					}
+                    function noReturn() {
+                        function nestedHasReturn() {
+                            return 1;
+                        }
+                    }
+				},
+				errors: 2
+			}
+			/* jshint ignore:end */
+		]);
+	});
 });
