@@ -1,6 +1,6 @@
 describe('lib/rules/validate-jsdoc/check-annotations', function() {
     var checker = global.checker({
-        additionalRules: ['lib/rules/validate-jsdoc.js']
+        plugins: ['.']
     });
 
     describe('with true', function() {

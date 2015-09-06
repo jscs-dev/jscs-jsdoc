@@ -3,6 +3,8 @@ var parse = require('comment-parser');
 var chai = require('chai');
 var expect = chai.expect;
 
+chai.use(require('chai-subset'));
+
 global.parse = parse;
 global.fnBody = fnBody;
 global.checker = rulesChecker;
@@ -110,7 +112,7 @@ function rulesChecker(opts) {
                             .to.eq(test.errors || 0);
                     } else if (Array.isArray(test.errors)) {
                         expect(errors)
-                            .to.deep.equal(test.errors);
+                            .to.containSubset(test.errors);
                     } else {
                         expect(checked.getErrorCount())
                             .to.not.eq(0);

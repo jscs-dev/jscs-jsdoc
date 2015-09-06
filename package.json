@@ -28,7 +28,8 @@
   },
   "devDependencies": {
     "chai": "^2.3.0",
-    "jscs": "^1.13.1",
+    "chai-subset": "^1.1.0",
+    "jscs": "^2.1.1",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4"
   },
