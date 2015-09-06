@@ -36,6 +36,8 @@
     "global": false,
     "host": true,
     "ignore": false,
+    "implements": true,
+    "inheritdoc": false,
     "inner": false,
     "instance": false,
     "interface": true,
