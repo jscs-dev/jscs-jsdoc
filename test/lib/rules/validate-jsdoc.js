@@ -52,6 +52,16 @@ describe('lib/rules/validate-jsdoc', function () {
                         // doesn't mean
                     }
                 }
+            }, {
+                it: 'finds docblock after a blank line',
+                rules: {checkReturnTypes: true},
+                code: function() {
+                    /**
+                     * Foo
+                     */
+
+                    function foo () {}
+                }
             }
             /* jshint ignore:end */
         ]);
