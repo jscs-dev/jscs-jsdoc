@@ -191,6 +191,7 @@ function _f ( message ) {
 function _f ( message ) {
   return true;
 }
+```
 
 ### checkParamNames
 
