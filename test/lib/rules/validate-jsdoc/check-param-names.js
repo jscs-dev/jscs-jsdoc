@@ -61,6 +61,17 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                 },
                 errors: 1
             }, {
+                it: 'should report error in jsdoc with default param for function (readme, #154)',
+                code: function () {
+                    /**
+                     * @param {String} msg
+                     * @param {Number} [line]
+                     */
+                    function method(message) {
+                    }
+                },
+                errors: 1
+            }, {
                 it: 'should report error in jsdoc for method',
                 code: function () {
                     Cls.prototype = {
