@@ -5,6 +5,40 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+
+## [v1.2.0] - 2015-09-22
+
+### New rules and values
+* [[`aa40ed5c6e`](https://github.com/jscs-dev/jscs-jsdoc/commit/aa40ed5c6e)] - New Rule: checkParamExistence (Jon Robson)
+* [[`e381c1a6e1`](https://github.com/jscs-dev/jscs-jsdoc/commit/e381c1a6e1)] - New Rule: requireReturnDescription (weekens)
+* [[`379e9ff023`](https://github.com/jscs-dev/jscs-jsdoc/commit/379e9ff023)] - **enforceExistence**: add paramless-procedures exception (Sergey Zarouski)
+
+### Tag sets
+* [[`1d6e20f588`](https://github.com/jscs-dev/jscs-jsdoc/commit/1d6e20f588)] - **Tags**: add @inheritdoc, @implements tags to jsdoc3 set (Alexej Yaroshevich)
+* [[`d670802aa8`](https://github.com/jscs-dev/jscs-jsdoc/commit/d670802aa8)] - **checkAnnotations**: add interface tag to jsdoc3 set (Alexej Yaroshevich)
+
+### Bug fixes
+* [[`1beefd3823`](https://github.com/jscs-dev/jscs-jsdoc/commit/1beefd3823)] - **checkReturnTypes**: skip checking 'this.something' (Alexej Yaroshevich)
+* [[`1a085085c0`](https://github.com/jscs-dev/jscs-jsdoc/commit/1a085085c0)] - **enforceExistence**: fix error location property (Shmavon Gazanchyan)
+* [[`140dfd683a`](https://github.com/jscs-dev/jscs-jsdoc/commit/140dfd683a)] - **enforceExistence**: rework rule, add options to suppress exporting, expressions, etc. (Matt Votsikas)
+* [[`f3985b0930`](https://github.com/jscs-dev/jscs-jsdoc/commit/f3985b0930)] - **requireDescriptionCompleteSentence**: fix trailing non-word character bug (Titus Wormer)
+* [[`c74cc592d4`](https://github.com/jscs-dev/jscs-jsdoc/commit/c74cc592d4)] - **requireHyphenBeforeDescription**: improve multiline support checks (Alexej Yaroshevich)
+
+### Misc
+* [[`4548ecfe7a`](https://github.com/jscs-dev/jscs-jsdoc/commit/4548ecfe7a)] - **Misc**: find docblock before a blank line (Luke Vivier)
+* [[`b0d220f8b2`](https://github.com/jscs-dev/jscs-jsdoc/commit/b0d220f8b2)] - **Misc**: add test for checkParamNames (Alexej Yaroshevich)
+* [[`c768497833`](https://github.com/jscs-dev/jscs-jsdoc/commit/c768497833)] - **Misc**: make error messages consistent: sentence case and no period (aj-dev)
+* [[`b9da3fc3e0`](https://github.com/jscs-dev/jscs-jsdoc/commit/b9da3fc3e0)] - **Misc**: fix codestyle error (Alexej Yaroshevich)
+* [[`8ba3eaf748`](https://github.com/jscs-dev/jscs-jsdoc/commit/8ba3eaf748)] - **Misc**: update jscs and fix tests (Alexej Yaroshevich)
+* [[`43bfdeb48c`](https://github.com/jscs-dev/jscs-jsdoc/commit/43bfdeb48c)] - **Misc**: skip checking for incorrectly formatted jsdoc blocks (Alexej Yaroshevich)
+* [[`50411e0b61`](https://github.com/jscs-dev/jscs-jsdoc/commit/50411e0b61)] - **Misc**: pass context of jsdoc to sub-rule configurate (Alexej Yaroshevich)
+* [[`96e976539f`](https://github.com/jscs-dev/jscs-jsdoc/commit/96e976539f)] - **checkAnnotations**: store rule configuration locally (Alexej Yaroshevich)
+
+### Docs
+* [[`37e3f44b8d`](https://github.com/jscs-dev/jscs-jsdoc/commit/37e3f44b8d)] - **Docs**: fix markup (Alexej Yaroshevich)
+* [[`e8a73ccb2e`](https://github.com/jscs-dev/jscs-jsdoc/commit/e8a73ccb2e)] - **Docs**: fix code highlight in README.md (Felquis Gimenes)
+
+
 ## [v1.1.0] - 2015-06-24
 
 ### New rules
@@ -402,7 +436,8 @@ Initial functionality imported from JSCS
 * [[`49fc5825d7`](https://github.com/jscs-dev/jscs-jsdoc/commit/49fc5825d7)] - initial functionality (Alexej Yaroshevich)
 
 
-[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.2.0...HEAD
+[v1.2.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.0...v1.0.1
 [v1.0.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v0.4.6...v1.0.0
