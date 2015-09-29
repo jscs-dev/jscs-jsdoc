@@ -147,6 +147,33 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
 
     });
 
+    describe('with true and esnext', function() {
+        checker.rules({enforceExistence: true}, {esnext: true});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should report jsdoc absence for named function export (#159)',
+                code: [
+                    'export default function named (v) {',
+                    '};',
+                ].join('\n'),
+                errors: 1,
+            }, {
+                it: 'should not report jsdoc absence for named function export (#159)',
+                code: [
+                    '/**',
+                    ' * Foo bar',
+                    ' */',
+                    'export default function named (v) {',
+                    '};',
+                ].join('\n'),
+                errors: 0,
+            },
+            /* jshint ignore:end */
+        ]);
+    });
+
     describe('with exceptExports', function() {
         checker.rules({enforceExistence: 'exceptExports'});
 
@@ -158,6 +185,23 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
                     module.exports = function () {
                     };
                 }
+            }
+            /* jshint ignore:end */
+        ]);
+    });
+
+    describe('with exceptExports and esnext', function() {
+        checker.rules({enforceExistence: 'exceptExports'}, {esnext: true});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report jsdoc absence for named function export (#159)',
+                code: [
+                    'export default function named (v) {',
+                    '};',
+                ].join('\n'),
+                errors: 0,
             }
             /* jshint ignore:end */
         ]);
