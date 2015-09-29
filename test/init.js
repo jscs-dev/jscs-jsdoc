@@ -70,9 +70,11 @@ function rulesChecker(opts) {
          *
          * @param {Object} rules
          */
-        rules: function(rules) {
+        rules: function(rules, opts) {
             beforeEach(function() {
-                checker.configure({jsDoc: rules});
+                opts = opts || {};
+                opts.jsDoc = rules;
+                checker.configure(opts);
             });
         },
 
@@ -109,7 +111,9 @@ function rulesChecker(opts) {
 
                     if (!test.hasOwnProperty('errors') || (typeof test.errors === 'number')) {
                         expect(checked.getErrorCount())
-                            .to.eq(test.errors || 0);
+                            .to.eq(test.errors || 0, test.errors ?
+                                'Expect ' + test.errors + ' error(s)'
+                                : 'Unexpected error(s)');
                     } else if (Array.isArray(test.errors)) {
                         expect(errors)
                             .to.containSubset(test.errors);
