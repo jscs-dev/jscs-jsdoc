@@ -71,13 +71,15 @@ To use plugin you should add these lines to configuration file `.jscsrc`:
 
 ### checkAnnotations
 
-Ensures tag names are valid
+Checks tag names are valid
 
 There are 3 presets for `Closure Compiler`, `JSDoc3` and `JSDuck5`.
 
-By default it allows any tag of mixed set. You can pass `Object` to select preset with `preset` field and add custom tags with `extra` field.
+By default it allows any tag of mixed set. You can pass `Object`
+to select preset with `preset` field and add custom tags with `extra` field.
 
-Type: `Boolean` or `String` or `{"preset": String, "extra": Object}` (see [tag values](#user-content-tag-values))
+Type: `Boolean` or `String` or `{"preset": String, "extra": Object}`
+(see [tag values](#user-content-tag-values)).
 
 Values: `true`, `"closurecompiler"`, `"jsdoc3"`, `"jsduck5"`, `Object`
 
@@ -150,7 +152,7 @@ function _f() {}
 
 ### checkParamExistence
 
-Ensures all parameters are documented.
+Checks all parameters are documented.
 
 Type: `Boolean`
 
@@ -195,7 +197,7 @@ function _f ( message ) {
 
 ### checkParamNames
 
-Ensures param names in jsdoc and in function declaration are equal
+Checks param names in jsdoc and in function declaration are equal
 
 Type: `Boolean`
 
@@ -233,7 +235,7 @@ function method(message) {}
 
 ### requireParamTypes
 
-Ensures params in jsdoc contains type
+Checks params in jsdoc contains type
 
 Type: `Boolean`
 
@@ -305,7 +307,7 @@ function method() {}
 
 ### checkReturnTypes
 
-Reports discrepancies between the claimed in jsdoc and actual type if both exist (code scan)
+Checks for differences between the jsdoc and actual return types if both exist.
 
 Type: `Boolean`
 
@@ -388,7 +390,7 @@ function f() {
 
 ### requireReturnTypes
 
-Ensures returns in jsdoc contains type
+Checks returns in jsdoc contains type
 
 Type: `Boolean`
 
@@ -431,9 +433,10 @@ function method() {}
 
 Reports invalid types for bunch of tags
 
-In `strictNativeCase` mode ensures that case of natives is the same as in this list: `boolean`, `number`, `string`, `Object`, `Array`, `Date`, `RegExp`.
+The `strictNativeCase` mode checks that case of natives is the same as in this
+list: `boolean`, `number`, `string`, `Object`, `Array`, `Date`, `RegExp`.
 
-In `capitalizedNativeCase` mode ensures that first letter in all native types and primitives is uppercased except the case with `function` in google closure format: `{function(...)}`
+The `capitalizedNativeCase` mode checks that the first letter in all native types and primitives is uppercased except the case with `function` in google closure format: `{function(...)}`
 
 Type: `Boolean` or `String`
 
@@ -553,9 +556,11 @@ function _f() {}
 
 ### leadingUnderscoreAccess
 
-Ensures access declaration is set for `_underscored` function names
+Checks access declaration is set for `_underscored` function names
 
-Ignores a bunch of popular identifiers: `__filename`, `__dirname`, `__proto__`, `__defineGetter__`, `super_`, `__constructor`, etc.
+Ignores a bunch of popular identifiers:
+`__filename`, `__dirname`, `__proto__`, `__defineGetter__`, `super_`,
+`__constructor`, etc.
 
 Type: `Boolean` or `String`
 
@@ -593,7 +598,7 @@ function _e() {}
 
 ### enforceExistence
 
-Ensures jsdoc block exist
+Checks jsdoc block exist
 
 Type: `Boolean`, `String` or `Object`
 
@@ -604,7 +609,8 @@ Values:
   - `"allExcept"` array of exceptions:
     - `"expressions"` skip expression functions
     - `"exports"` skip `module.exports = function () {};`
-    - `"paramless-procedures"` functions without parameters and with empty return statements will be skipped
+    - `"paramless-procedures"` functions without parameters and with empty
+      return statements will be skipped
 
 Context: `functions`
 
@@ -632,7 +638,7 @@ function _g() {}
 
 ### requireHyphenBeforeDescription
 
-Ensures a param description has a hyphen before it (checks for `- `)
+Checks a param description has a hyphen before it (checks for `- `)
 
 Type: `Boolean`
 
@@ -669,7 +675,7 @@ function method() {}
 
 ### requireNewlineAfterDescription
 
-Ensures a doc comment description has padding newline
+Checks a doc comment description has padding newline
 
 Type: `Boolean`
 
@@ -719,7 +725,7 @@ function method() {}
 
 ### disallowNewlineAfterDescription
 
-Ensures a doc comment description has no padding newlines
+Checks a doc comment description has no padding newlines
 
 Type: `Boolean`
 
@@ -769,9 +775,10 @@ function method() {}
 
 ### requireDescriptionCompleteSentence
 
-Ensures a doc comment description is a complete sentence.
+Checks a doc comment description is a complete sentence.
 
-A complete sentence is defined as starting with an upper case letter and ending with a period.
+A complete sentence is defined as starting with an upper case letter and ending
+with a period.
 
 Type: `Boolean`
 
@@ -852,7 +859,7 @@ function method() {}
 
 ### requireParamDescription
 
-Ensures a param description exists.
+Checks a param description exists.
 
 Type: `Boolean`
 
@@ -899,7 +906,7 @@ function method(arg) {}
 
 ### requireReturnDescription
 
-Ensures a return description exists.
+Checks a return description exists.
 
 Type: `Boolean`
 
