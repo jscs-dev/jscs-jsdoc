@@ -75,7 +75,7 @@ Checks tag names are valid
 
 There are 3 presets for `Closure Compiler`, `JSDoc3` and `JSDuck5`.
 
-By default it allows any tag of mixed set. You can pass `Object`
+By default it allows any tag from any preset. You can pass `Object`
 to select preset with `preset` field and add custom tags with `extra` field.
 
 Type: `Boolean` or `String` or `{"preset": String, "extra": Object}`
