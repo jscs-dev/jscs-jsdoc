@@ -71,7 +71,7 @@ To use plugin you should add these lines to configuration file `.jscsrc`:
 
 ### checkAnnotations
 
-Checks tag names are valid
+Checks tag names are valid.
 
 There are 3 presets for `Closure Compiler`, `JSDoc3` and `JSDuck5`.
 
@@ -197,7 +197,7 @@ function _f ( message ) {
 
 ### checkParamNames
 
-Checks param names in jsdoc and in function declaration are equal
+Checks param names in jsdoc and in function declaration are equal.
 
 Type: `Boolean`
 
@@ -235,7 +235,7 @@ function method(message) {}
 
 ### requireParamTypes
 
-Checks params in jsdoc contains type
+Checks params in jsdoc contains type.
 
 Type: `Boolean`
 
@@ -271,7 +271,7 @@ function method() {}
 
 ### checkRedundantParams
 
-Reports redundant params in jsdoc
+Reports redundant params in jsdoc.
 
 Type: `Boolean`
 
@@ -350,7 +350,7 @@ function method(f) {
 
 ### checkRedundantReturns
 
-Report statements for functions with no return
+Report statements for functions without return.
 
 Type: `Boolean`
 
@@ -431,12 +431,13 @@ function method() {}
 
 ### checkTypes
 
-Reports invalid types for bunch of tags
+Reports invalid types for bunch of tags.
 
 The `strictNativeCase` mode checks that case of natives is the same as in this
 list: `boolean`, `number`, `string`, `Object`, `Array`, `Date`, `RegExp`.
 
-The `capitalizedNativeCase` mode checks that the first letter in all native types and primitives is uppercased except the case with `function` in google closure format: `{function(...)}`
+The `capitalizedNativeCase` mode checks that the first letter in all native
+types and primitives is uppercased except the case with `function` in google closure format: `{function(...)}`
 
 Type: `Boolean` or `String`
 
@@ -504,7 +505,7 @@ var x = 1;
 
 ### checkRedundantAccess
 
-Reports redundant access declarations
+Reports redundant access declarations.
 
 Type: `Boolean` or `String`
 
@@ -598,7 +599,7 @@ function _e() {}
 
 ### enforceExistence
 
-Checks jsdoc block exist
+Checks jsdoc block exists.
 
 Type: `Boolean`, `String` or `Object`
 
@@ -638,7 +639,7 @@ function _g() {}
 
 ### requireHyphenBeforeDescription
 
-Checks a param description has a hyphen before it (checks for `- `)
+Checks a param description has a hyphen before it (checks for `- `).
 
 Type: `Boolean`
 
@@ -675,7 +676,7 @@ function method() {}
 
 ### requireNewlineAfterDescription
 
-Checks a doc comment description has padding newline
+Checks a doc comment description has padding newline.
 
 Type: `Boolean`
 
@@ -725,7 +726,7 @@ function method() {}
 
 ### disallowNewlineAfterDescription
 
-Checks a doc comment description has no padding newlines
+Checks a doc comment description has no padding newlines.
 
 Type: `Boolean`
 
