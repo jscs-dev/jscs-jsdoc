@@ -153,22 +153,38 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         checker.cases([
             /* jshint ignore:start */
             {
-                it: 'should report jsdoc absence for named function export (#159)',
+                it: 'should report jsdoc absence for default named function export (#159)',
+                code: 'export default function named (v) {};',
+                errors: 1,
+            }, {
+                it: 'should not report jsdoc absence for default named function export (#159)',
                 code: [
-                    'export default function named (v) {',
-                    '};',
+                    '/** Foo bar */',
+                    'export default function named (v) {};',
                 ].join('\n'),
+                errors: 0,
+            }, {
+                it: 'should report jsdoc absence for named function export (#159)',
+                code: 'export function named (v) {};',
                 errors: 1,
             }, {
                 it: 'should not report jsdoc absence for named function export (#159)',
                 code: [
-                    '/**',
-                    ' * Foo bar',
-                    ' */',
-                    'export default function named (v) {',
-                    '};',
+                    '/** Foo bar */',
+                    'export function named (v) {};',
                 ].join('\n'),
-                errors: 0,
+            }, {
+                skip: true,
+                it: 'should report jsdoc absence for default arrow function export (#159)',
+                code: 'export default (v) => {};',
+                errors: 1,
+            }, {
+                skip: true,
+                it: 'should not report jsdoc absence for default arrow function export (#159)',
+                code: [
+                    '/** Foo bar */',
+                    'export default (v) => {};',
+                ].join('\n'),
             },
             /* jshint ignore:end */
         ]);
@@ -196,11 +212,21 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
         checker.cases([
             /* jshint ignore:start */
             {
+                it: 'should not report jsdoc absence for default named function export (#159)',
+                code: 'export default function named (v) {};',
+                errors: 0,
+            }, {
                 it: 'should not report jsdoc absence for named function export (#159)',
-                code: [
-                    'export default function named (v) {',
-                    '};',
-                ].join('\n'),
+                code: 'export function named (v) {};',
+                errors: 0,
+            }, {
+                it: 'should not report jsdoc absence for default anonymous function export (#159)',
+                code: 'export default function (v) {};',
+                errors: 0,
+            }, {
+                skip: true,
+                it: 'should not report jsdoc absence for default arrow function export (#159)',
+                code: 'export default (v) => {};',
                 errors: 0,
             }
             /* jshint ignore:end */
