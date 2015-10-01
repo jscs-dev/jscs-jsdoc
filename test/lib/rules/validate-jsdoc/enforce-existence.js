@@ -174,18 +174,32 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
                     'export function named (v) {};',
                 ].join('\n'),
             }, {
-                skip: true,
                 it: 'should report jsdoc absence for default arrow function export (#159)',
                 code: 'export default (v) => {};',
                 errors: 1,
             }, {
-                skip: true,
                 it: 'should not report jsdoc absence for default arrow function export (#159)',
                 code: [
                     '/** Foo bar */',
                     'export default (v) => {};',
                 ].join('\n'),
             },
+            /* jshint ignore:end */
+        ]);
+    });
+
+    describe('with allExcept arrows and esnext', function() {
+        checker.rules({enforceExistence: {allExcept: ['arrow']}}, {esnext: true});
+
+        checker.cases([
+            /* jshint ignore:start */
+            {
+                it: 'should not report arrows without jsdoc',
+                code: '() => {};',
+            }, {
+                it: 'should not report anonymous without jsdoc',
+                code: '(function() {})',
+            }
             /* jshint ignore:end */
         ]);
     });
@@ -224,7 +238,6 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
                 code: 'export default function (v) {};',
                 errors: 0,
             }, {
-                skip: true,
                 it: 'should not report jsdoc absence for default arrow function export (#159)',
                 code: 'export default (v) => {};',
                 errors: 0,
