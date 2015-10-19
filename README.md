@@ -62,7 +62,9 @@ To use plugin you should add these lines to configuration file `.jscsrc`:
     "jsDoc": {
         "checkAnnotations": "closurecompiler",
         "checkTypes": "strictNativeCase",
-        "enforceExistence": "exceptExports"
+        "enforceExistence": {
+            "allExcept": ["exports"]
+        }
     }
 }
 ```
