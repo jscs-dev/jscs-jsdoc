@@ -67,6 +67,15 @@ describe('lib/rules/validate-jsdoc/check-redundant-returns', function () {
                     }
                 }
             }, {
+                it: 'should not report redundant @returns for arrow function',
+                code: [
+                    '/** @returns {String}*/',
+                    'var funcName = () => {',
+                    '    var x = function () { return 1; }',
+                    '    if (true) { return x; }',
+                    '}'
+                ].join('\n')
+            }, {
                 it: 'should not report expression return for inner call result',
                 code: function () {
                     /**
