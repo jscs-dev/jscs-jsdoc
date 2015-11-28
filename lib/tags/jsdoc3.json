@@ -52,6 +52,7 @@
     "module": true,
     "name": true,
     "namespace": true,
+    "override": true,
     "overview": true,
     "param": true,
     "private": false,
