@@ -1,5 +1,5 @@
 # jscs-jsdoc
-[![Gitter](https://img.shields.io/badge/GITTER-JOIN_CHAT_%E2%86%92-1dce73.svg)](https://gitter.im/jscs-dev/talks?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://img.shields.io/gitter/room/jscs-dev/node-jscs.svg)](https://gitter.im/jscs-dev/node-jscs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://img.shields.io/travis/jscs-dev/jscs-jsdoc.svg)](http://travis-ci.org/jscs-dev/jscs-jsdoc?style=flat)
 [![Dependency Status](https://img.shields.io/david/jscs-dev/jscs-jsdoc.svg)](https://david-dm.org/jscs-dev/jscs-jsdoc)
 [![Coverage](https://img.shields.io/coveralls/jscs-dev/jscs-jsdoc.svg)](https://coveralls.io/r/jscs-dev/jscs-jsdoc)
@@ -19,6 +19,8 @@
 - [Browser Usage](#browser-usage)
 
 ## Plugin installation
+
+**NB** Since `jscs v2.0` the plugin `jscs-jsdoc` is bundled into it.
 
 `jscs-jsdoc` can be installed using NPM and requires [jscs](https://github.com/jscs-dev/node-jscs/#installation).
 
@@ -952,27 +954,4 @@ function method() {
 function method() {
   return false;
 }
-```
-
-
-## Browser Usage
-
-NOT SUPPORTED ATM. SORRY.
-
-File [jscs-jsdoc-browser.js](jscs-jsdoc-browser.js) contains browser-compatible version of `jscs-jsdoc`.
-
-Download and include `jscs-jsdoc-browser.js` into your page just after `jscs-browser.js`.
-
-```html
-<script src="jscs-browser.js"></script>
-<script src="jscs-jsdoc-browser.js"></script>
-<script>
-    var checker = new JscsStringChecker();
-    checker.registerDefaultRules();
-    checker.configure({'jsDoc': {/* ... */}});
-    var errors = checker.checkString('var x, y = 1;');
-    errors.getErrorList().forEach(function (error) {
-        console.log(errors.explainError(error));
-    });
-</script>
 ```
