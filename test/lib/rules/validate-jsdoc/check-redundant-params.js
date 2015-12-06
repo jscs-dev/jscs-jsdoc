@@ -105,7 +105,7 @@ describe('lib/rules/validate-jsdoc/check-redundant-params', function () {
                     };
                 }
             }, {
-                it: 'should not report redundant params with variable params',
+                it: 'should not report redundant params with variadic param',
                 code: function () {
                     /**
                      * Issue #62

@@ -1,7 +1,7 @@
 {
   "name": "jscs-jsdoc",
   "author": "Alexej Yaroshevich <alex@qfox.ru>",
-  "description": "JSCS jsdoc plugin",
+  "description": "JSDoc linting rules for JSCS",
   "version": "1.2.0",
   "main": "lib/index",
   "homepage": "https://github.com/jscs-dev/jscs-jsdoc",
@@ -24,17 +24,17 @@
   },
   "dependencies": {
     "comment-parser": "0.3.0",
-    "jsdoctypeparser": "~1.2.0"
+    "jsdoctypeparser": "~2.0.0-alpha-5"
   },
   "devDependencies": {
-    "chai": "^2.3.0",
+    "chai": "^3.3.0",
     "chai-subset": "^1.1.0",
-    "jscs": "^2.1.1",
-    "jshint": "^2.7.0",
-    "mocha": "^2.2.4"
+    "jscs": "^2.2.1",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.3"
   },
-  "_peerDependencies": {
-    "jscs": ">=1.8.0 <2.0"
+  "peerDependencies": {
+    "jscs": ">=1.8"
   },
   "scripts": {
     "lint": "jshint lib test && jscs lib test",
@@ -43,13 +43,6 @@
     "changelog": "changelog-maker jscs-dev jscs-jsdoc --group"
   },
   "files": [
-    "lib",
-    "LICENSE"
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/jscs-dev/jscs-jsdoc/raw/master/LICENSE"
-    }
+    "lib"
   ]
 }

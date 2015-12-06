@@ -301,10 +301,23 @@ describe('lib/rules/validate-jsdoc/check-return-types', function () {
                         return new this.something();
                     }
                 }
+            }, {
+                it: 'should not report chained',
+                code: function () {
+                    /**
+                     * @returns {Array} Bar
+                     */
+                    function sanitizeFoos (foos) {
+                        return foos
+                            .map(foo => ({
+                                id: foo.id,
+                                category: foo.category,
+                            }));
+                    }
+                }
             }
             /* jshint ignore:end */
         ]);
-
     });
 
 });

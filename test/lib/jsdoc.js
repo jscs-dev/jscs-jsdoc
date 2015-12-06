@@ -62,13 +62,38 @@ describe('jsdoc', function() {
             bool1 = new Type('boolean', new Location(3, 4));
             varnum = new Type('...number', new Location(10, 20));
             nullie = new Type('Null|null', new Location(2, 5));
+/* DocType {
+  value: 'boolean',
+  loc: DocLocation { line: 3, column: 4 },
+  optional: false,
+  variable: false,
+  valid: true,
+  match: [Function],
+  iterate: [Function] }
+DocType {
+  value: '...number',
+  loc: DocLocation { line: 10, column: 23 },
+  optional: false,
+  variable: true,
+  valid: true,
+  match: [Function],
+  iterate: [Function] }
+DocType {
+  value: 'Null|null',
+  loc: DocLocation { line: 2, column: 5 },
+  optional: false,
+  variable: false,
+  valid: true,
+  match: [Function],
+  iterate: [Function] } */
         });
 
         it('should store data', function() {
+            expect(bool1.type).to.eq('Name');
             expect(bool1.value).to.eq('boolean');
             expect(bool1.loc.line).to.eq(3);
             expect(bool1.loc.column).to.eq(4);
-            expect(varnum.variable).to.eq(true);
+            expect(varnum.type).to.eq('Variadic');
             expect(varnum.loc.line).to.eq(10);
             expect(varnum.loc.column).to.eq(23);
         });
