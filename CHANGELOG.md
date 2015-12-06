@@ -5,6 +5,46 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+## [v1.3.0] - 2015-12-05
+
+It was more than 2 months gap since the last release and here we are with a couple of bug fixes and better ES2015 support. A big part of fixes related to `requireDescriptionCompleteSentence` rule. If you had troubles with it you can give it a try now. `enforceExistence` now supports ES2015 exports and treats it like CommonJS `module.exports`.
+
+Also we should note that [Jordan Harband](http://github.com/ljharb) came with a `node v0.8` support :tada:. Thank you, Jordan!
+
+Besides the current release there will be a huge update with a new [:gift:`jsdoctypeparser`](https://github.com/Kuniwak/jsdoctypeparser) with better support of jsdoc types and several very important changes especially for linters. It's still in alpha but feels like it could be a good idea to release an alpha version with it (I guess it will be the next :shipit: one).
+
+P.S. Futher releases should be more often since I'll found few hours a week to do it...
+But if you feel that your ideas should be implemented, or you are ready to assist with issues, or even help with maintaining, let's collaborate, :trophy: waits you.
+
+### Changes in rules
+* [[`b9ffead365`](https://github.com/jscs-dev/jscs-jsdoc/commit/b9ffead365)] - Update Rule: inlined tags in requireDescriptionCompleteSentence (Alexey Yaroshevich)
+* [[`5cae0345b6`](https://github.com/jscs-dev/jscs-jsdoc/commit/5cae0345b6)] - Update Rule: add arrow exception to enforceExistence rule (Alexej Yaroshevich)
+
+### Bug fixes
+* [[`4735603a75`](https://github.com/jscs-dev/jscs-jsdoc/commit/4735603a75)] - **Fix**: dont stick IIFE with outpadded docblock (Alexey Yaroshevich)
+* [[`42c642a98a`](https://github.com/jscs-dev/jscs-jsdoc/commit/42c642a98a)] - **Fix**: lists now treats like a sentence in requireDescriptionCompleteSentence (Alexey Yaroshevich)
+* [[`9805a4ebf5`](https://github.com/jscs-dev/jscs-jsdoc/commit/9805a4ebf5)] - **Fix**: dot in abbreviation is treated like an end (Alexey Yaroshevich)
+* [[`c771b255ed`](https://github.com/jscs-dev/jscs-jsdoc/commit/c771b255ed)] - **Fix**: slightly correct description calculation (Alexey Yaroshevich)
+* [[`84def6aedc`](https://github.com/jscs-dev/jscs-jsdoc/commit/84def6aedc)] - **Fix**: scope for arrow functions (Sergey Zarouski)
+* [[`739ed3fe2f`](https://github.com/jscs-dev/jscs-jsdoc/commit/739ed3fe2f)] - **Fix**: add ExportNamedDeclaration to enforceExistence (Alexej Yaroshevich)
+* [[`5f7d756aa8`](https://github.com/jscs-dev/jscs-jsdoc/commit/5f7d756aa8)] - **Fix**: add support of es6 exports in enforceExistence (Alexej Yaroshevich)
+
+### Tag sets
+* [[`d2070ef6e0`](https://github.com/jscs-dev/jscs-jsdoc/commit/d2070ef6e0)] - **Tags**: add override as a valid tag to jsdoc3 set (Brittany Tarvin)
+
+### Docs
+* [[`4db0f2b5d4`](https://github.com/jscs-dev/jscs-jsdoc/commit/4db0f2b5d4)] - **Docs**: add changelog for release and fix readme (Alexey Yaroshevich)
+* [[`244c3876b8`](https://github.com/jscs-dev/jscs-jsdoc/commit/244c3876b8)] - **Docs**: fix travis link, change gitter chat to node-jscs (Alexey Yaroshevich)
+* [[`4d28215a06`](https://github.com/jscs-dev/jscs-jsdoc/commit/4d28215a06)] - **Docs**: drop browser section, add note about bundling into jscs (Alexey Yaroshevich)
+* [[`21f5eda422`](https://github.com/jscs-dev/jscs-jsdoc/commit/21f5eda422)] - **Docs**: fix mistyped example for requireDescriptionCompleteSentense (Alexey Yaroshevich)
+* [[`d91140dc43`](https://github.com/jscs-dev/jscs-jsdoc/commit/d91140dc43)] - **Docs**: fix grammar for couple of rules (Alexej Yaroshevich)
+* [[`6c74293b97`](https://github.com/jscs-dev/jscs-jsdoc/commit/6c74293b97)] - **Docs**: update deprecated enforceExistence in Usage section (Damien SEGUIN)
+
+### Misc
+* [[`0094e85d47`](https://github.com/jscs-dev/jscs-jsdoc/commit/0094e85d47)] - **Chore**: return peerDeps since they are valid (Alexey Yaroshevich)
+* [[`842dcb5f3d`](https://github.com/jscs-dev/jscs-jsdoc/commit/842dcb5f3d)] - **Chore**: add more nodes to travis: 0.8, 4 and 5 (Alexey Yaroshevich)
+* [[`c25a184fb4`](https://github.com/jscs-dev/jscs-jsdoc/commit/c25a184fb4)] - **Chore**: bump comment-parser to v0.3.1 (Jordan Harband)
+* [[`5df4bff183`](https://github.com/jscs-dev/jscs-jsdoc/commit/5df4bff183)] - **Misc**: replace tabs with spaces (Alexej Yaroshevich)
 
 ## [v1.2.0] - 2015-09-22
 
@@ -436,7 +476,8 @@ Initial functionality imported from JSCS
 * [[`49fc5825d7`](https://github.com/jscs-dev/jscs-jsdoc/commit/49fc5825d7)] - initial functionality (Alexej Yaroshevich)
 
 
-[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.2.0...HEAD
+[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.3.0...HEAD
+[v1.3.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.1...v1.1.0
 [v1.0.1]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.0...v1.0.1
