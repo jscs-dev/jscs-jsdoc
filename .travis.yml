@@ -2,19 +2,30 @@ language: node_js
 sudo: false
 
 node_js:
+#  - "0.8" - disabled unless jscs has 0.8 support
   - "0.10"
   - "0.12"
-  - "iojs"
+  - "v4"
+  - "v5"
 
 matrix:
   fast_finish: true
 
+before_install:
+  # 0.8 has npm-1.2 that doesn't support caret (^) operator
+  - |
+      [[ $(npm -v) < "2.0" ]] && npm i -g npm@latest-2 || true
+  - npm --version
+
 before_script:
-  - ln -s ../ ./node_modules/jscs-jsdoc
+  # v5 don't need that symlink for some reason (npm3?)
+  - |
+      [ -d ./node_modules/jscs-jsdoc ] || ln -s ../ ./node_modules/jscs-jsdoc
 
 after_success:
+  # calculate coverage only once
   - |
-      if [ "${TRAVIS_NODE_VERSION}" == "0.10" ]; then
+      if [ "${TRAVIS_NODE_VERSION}" == "0.12" ]; then
         npm i istanbul istanbul-coveralls
         istanbul cover --report lcovonly ./node_modules/.bin/_mocha
         istanbul-coveralls && echo "Coverage data was sent to coveralls!"
