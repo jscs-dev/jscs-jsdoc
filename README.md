@@ -698,9 +698,9 @@ Tags: `*`
 
 ```js
 /**
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 
 /**
  * Description
@@ -710,9 +710,9 @@ function method() {}
 /**
  * Description
  *
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 ```
 
 ##### Invalid
@@ -748,9 +748,9 @@ Tags: `*`
 
 ```js
 /**
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 
 /**
  * Description
@@ -759,9 +759,9 @@ function method() {}
 
 /**
  * Description
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 ```
 
 ##### Invalid
@@ -772,7 +772,7 @@ function method() {}
  *
  * @param {String} message
  */
-function method() {}
+function method(message) {}
 ```
 
 
@@ -801,9 +801,9 @@ Tags: `*`
 
 ```js
 /**
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 
 /**
  * Description.
@@ -818,17 +818,17 @@ function method() {}
 /**
  * Description.
  *
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 
 /**
  * Description
- * On multiple lines.
+ * on multiple lines are allowed.
  *
- * @param {String} - message
+ * @param {String} msg - message
  */
-function method() {}
+function method(msg) {}
 ```
 
 ##### Invalid
@@ -837,6 +837,14 @@ function method() {}
 /**
  * Description
  * @param {String} message
+ */
+function method() {}
+
+/**
+ * Description
+ * On multiple lines should not start with an upper case.
+ *
+ * @param {String} - message
  */
 function method() {}
 
