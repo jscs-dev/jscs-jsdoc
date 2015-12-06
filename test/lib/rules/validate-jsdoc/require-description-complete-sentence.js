@@ -166,6 +166,17 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                      */
                     function fun(p) {}
                 }
+            }, {
+                it: 'should not report inlined tags #180',
+                code: function () {
+                    /**
+                     * Heading.
+                     *
+                     * This method uses the algorithm defined here:
+                     * {@link http://stackoverflow.com/questions/1073336/circle-line-segment-collision-detection-algorithm}
+                     */
+                    function fun(p) {}
+                }
             }
             /* jshint ignore:end */
         ]);
