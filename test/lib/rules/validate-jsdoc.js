@@ -72,6 +72,21 @@ describe('lib/rules/validate-jsdoc', function () {
                     function foo () {}
                 },
                 errors: 1
+            }, {
+                it: 'should not stick docblock to IIFE #176',
+                rules: {enforceExistence: true},
+                code: function() {
+                    /**
+                     * Descriptive description of bar.
+                     *
+                     * @method bar
+                     * @param x
+                     */
+
+                    ( function ( $ ) {
+                        // dummy
+                    }( jQuery ) );
+                }
             }
             /* jshint ignore:end */
         ]);
