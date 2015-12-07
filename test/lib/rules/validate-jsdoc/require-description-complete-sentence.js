@@ -216,6 +216,22 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                      */
                     function fun(p) {}
                 }
+            }, {
+                it: 'should not report correct sentences formatted as lists',
+                code: function () {
+                    /**
+                     * Foo
+                     * `bar`.
+                     *
+                     * Baz:
+                     *
+                     * - qux
+                     * - Zot
+                     * - Qux
+                     * - zot
+                     */
+                    function quux() {}
+                }
             }
             /* jshint ignore:end */
         ]);
