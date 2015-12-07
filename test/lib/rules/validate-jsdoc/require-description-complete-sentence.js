@@ -134,12 +134,19 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                 code: function () {
                     /**
                      * Some `description`.
-                     *
-                     * @param {number} p description without hyphen
                      */
                     function fun(p) {}
                 },
                 errors: 0
+            }, {
+                it: 'should report final non-word characters without dot',
+                code: function () {
+                    /**
+                     * Some `description`
+                     */
+                    function fun(p) {}
+                },
+                errors: 1
             }, {
                 it: 'should report missing period at end of first line',
                 code: function () {
@@ -174,6 +181,38 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                      *
                      * This method uses the algorithm defined here:
                      * {@link http://stackoverflow.com/questions/1073336/circle-line-segment-collision-detection-algorithm}
+                     */
+                    function fun(p) {}
+                }
+            }, {
+                it: 'should not report strings like "e.g." #145',
+                code: function () {
+                    /**
+                     * Checks if token is part of an @-word (e.g. `@import`, `@include`).
+                     */
+                    function fun(p) {}
+                }
+            }, {
+                it: 'should not report sentences ending with dots inside quotes',
+                code: function () {
+                    /**
+                     * He said: "mickey."
+                     */
+                    function fun(p) {}
+                }
+            }, {
+                it: 'should not report sentences ending with dots inside quotes',
+                code: function () {
+                    /**
+                     * She said "Mickey." but he asked her to shut up.
+                     */
+                    function fun(p) {}
+                }
+            }, {
+                it: 'should not report sentences with periods inside quotes',
+                code: function () {
+                    /**
+                     * "r2. d2".
                      */
                     function fun(p) {}
                 }
