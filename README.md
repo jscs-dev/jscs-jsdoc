@@ -16,9 +16,10 @@
 - [Versioning & Semver](#versioning--semver)
 - [Usage](#usage)
 - [Rules](#rules)
-- [Browser Usage](#browser-usage)
 
 ## Plugin installation
+
+**NB** Since `jscs v2.0` the plugin `jscs-jsdoc` is bundled into it.
 
 `jscs-jsdoc` can be installed using NPM and requires [jscs](https://github.com/jscs-dev/node-jscs/#installation).
 
@@ -960,27 +961,4 @@ function method() {
 function method() {
   return false;
 }
-```
-
-
-## Browser Usage
-
-NOT SUPPORTED ATM. SORRY.
-
-File [jscs-jsdoc-browser.js](jscs-jsdoc-browser.js) contains browser-compatible version of `jscs-jsdoc`.
-
-Download and include `jscs-jsdoc-browser.js` into your page just after `jscs-browser.js`.
-
-```html
-<script src="jscs-browser.js"></script>
-<script src="jscs-jsdoc-browser.js"></script>
-<script>
-    var checker = new JscsStringChecker();
-    checker.registerDefaultRules();
-    checker.configure({'jsDoc': {/* ... */}});
-    var errors = checker.checkString('var x, y = 1;');
-    errors.getErrorList().forEach(function (error) {
-        console.log(errors.explainError(error));
-    });
-</script>
 ```
