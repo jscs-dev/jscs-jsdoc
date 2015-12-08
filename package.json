@@ -33,9 +33,6 @@
     "jshint": "^2.7.0",
     "mocha": "^2.2.4"
   },
-  "peerDependencies": {
-    "jscs": ">=1.8.0"
-  },
   "scripts": {
     "lint": "jshint lib test && jscs lib test",
     "test": "npm run lint && mocha",
