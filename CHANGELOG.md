@@ -5,6 +5,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [unreleased]
 
+## [v1.3.1] - 2015-12-09
+
+This is more like cosmetic patch release to keep bundling into `jscs`.
+It was a bad idea to add back peerDeps.
+
+### Misc
+* [[`d4e28d85f7`](https://github.com/jscs-dev/jscs-jsdoc/commit/d4e28d85f7)] - **Chore**: drop peer deps (there is no way to use it) (Alexey Yaroshevich)
+* [[`bb3e784377`](https://github.com/jscs-dev/jscs-jsdoc/commit/bb3e784377)] - **Chore**: drop rudimentary compiled browserified version (Alexey Yaroshevich)
+
 ## [v1.3.0] - 2015-12-05
 
 It was more than 2 months gap since the last release and here we are with a couple of bug fixes and better ES2015 support. A big part of fixes related to `requireDescriptionCompleteSentence` rule. If you had troubles with it you can give it a try now. `enforceExistence` now supports ES2015 exports and treats it like CommonJS `module.exports`.
