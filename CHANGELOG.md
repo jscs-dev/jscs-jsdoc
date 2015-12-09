@@ -485,7 +485,8 @@ Initial functionality imported from JSCS
 * [[`49fc5825d7`](https://github.com/jscs-dev/jscs-jsdoc/commit/49fc5825d7)] - initial functionality (Alexej Yaroshevich)
 
 
-[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.3.0...HEAD
+[unreleased]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.3.1...HEAD
+[v1.3.1]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.2.0...v1.3.0
 [v1.2.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.1.0...v1.2.0
 [v1.1.0]: https://github.com/jscs-dev/jscs-jsdoc/compare/v1.0.1...v1.1.0
