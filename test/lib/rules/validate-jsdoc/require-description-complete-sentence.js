@@ -232,6 +232,28 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                      */
                     function quux() {}
                 }
+            }, {
+                it: 'should not report sentences with html tags inside',
+                code: function () {
+                    /**
+                     * A foo is assigned the boolean value <p>true</p>.
+                     */
+                    function fun(p) {}
+                }
+            }, {
+                it: 'should not report sentences that are html code',
+                code: function () {
+                  /**
+                   * The html code here
+                   * <body>
+                   *  <p> Hello world!</p>
+                   * </body>
+                   * Should always be there.
+                   * And the first letter of this line is in
+                   * uppercase.
+                   */
+                  function fun(p) {}
+                }
             }
             /* jshint ignore:end */
         ]);
