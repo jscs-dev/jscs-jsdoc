@@ -157,7 +157,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                 },
                 errors: [
                     {
-                        message: 'Parameters xxx and yyy are out of order',
+                        message: 'jsDoc: Parameters xxx and yyy are out of order',
                         column: 10,
                         line: 2,
                         rule: "jsDoc",
@@ -180,7 +180,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                 },
                 errors: [
                     {
-                        message: 'Parameters xxx and zzz are out of order',
+                        message: 'jsDoc: Parameters xxx and zzz are out of order',
                         column: 14,
                         line: 3,
                         rule: "jsDoc",
@@ -188,7 +188,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                         fixed: undefined
                     },
                     {
-                        message: 'Parameters yyy and xxx are out of order',
+                        message: 'jsDoc: Parameters yyy and xxx are out of order',
                         column: 14,
                         line: 4,
                         rule: "jsDoc",
@@ -209,8 +209,8 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     };
                 },
                 errors: [
-                    {message: 'Parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc", filename: "input", fixed: undefined},
-                    {message: 'Expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc", filename: "input", fixed: undefined}
+                    {message: 'jsDoc: Parameter xxx is out of order', column: 14, line: 3, rule: "jsDoc", filename: "input", fixed: undefined},
+                    {message: 'jsDoc: Expected xxx but got yyy', column: 14, line: 4, rule: "jsDoc", filename: "input", fixed: undefined}
                 ]
             }, {
                 it: 'should report out of order and expected v2',
@@ -225,8 +225,8 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     };
                 },
                 errors: [
-                    {message: 'Expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input", fixed: undefined},
-                    {message: 'Parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc", filename: "input", fixed: undefined}
+                    {message: 'jsDoc: Expected yyy but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input", fixed: undefined},
+                    {message: 'jsDoc: Parameter yyy is out of order', column: 14, line: 4, rule: "jsDoc", filename: "input", fixed: undefined}
                 ]
             }, {
                 it: 'should not report out of order but expected',
@@ -241,7 +241,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                     };
                 },
                 errors: [
-                    {message: 'Expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input", fixed: undefined}
+                    {message: 'jsDoc: Expected zzz but got xxx', column: 14, line: 3, rule: "jsDoc", filename: "input", fixed: undefined}
                 ]
             }, {
                 it: 'should not report wrong order',
@@ -324,7 +324,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                         column: 19,
                         filename: 'input',
                         line: 3,
-                        message: 'Expected `options` but got `definetelyNotOptions`',
+                        message: 'jsDoc: Expected `options` but got `definetelyNotOptions`',
                         rule: 'jsDoc',
                         fixed: undefined
                     },
@@ -332,7 +332,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                         column: 20,
                         filename: 'input',
                         line: 4,
-                        message: 'Expected `options` but got `otherOptions`',
+                        message: 'jsDoc: Expected `options` but got `otherOptions`',
                         rule: 'jsDoc',
                         fixed: undefined
                     }
@@ -345,7 +345,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                      */
                     module.exports.createMiddleware = function() { /* ... */ };
                 },
-                errors: { "message": "Inconsistent param found" }
+                errors: { "message": "jsDoc: Inconsistent param found" }
             }, {
                 it: 'should not report params',
                 code: function() {
@@ -380,8 +380,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
 
     describe('with destructurings', function() {
         var checker = global.checker({
-            plugins: ['./lib/index'],
-            esnext: true
+            plugins: ['./lib/index']
         });
         checker.rules({checkParamNames: true});
 
@@ -440,7 +439,7 @@ describe('lib/rules/validate-jsdoc/check-param-names', function() {
                         column: 19,
                         filename: 'input',
                         line: 3,
-                        message: 'Expected `fakeName` but got `notFakeName`',
+                        message: 'jsDoc: Expected `fakeName` but got `notFakeName`',
                         rule: 'jsDoc',
                         fixed: undefined
                     }

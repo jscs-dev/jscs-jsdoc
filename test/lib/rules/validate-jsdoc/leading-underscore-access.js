@@ -96,7 +96,7 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                 errors: [{
                     line: 9,
                     column: 9,
-                    message: 'Missing access tag for _funcName',
+                    message: 'jsDoc: Missing access tag for _funcName',
                     rule: 'jsDoc',
                     filename: 'input',
                     fixed: undefined
@@ -183,10 +183,10 @@ describe('lib/rules/validate-jsdoc/leading-underscore-access', function () {
                 },
                 errors: [{
                     column: 3, line: 2, filename: 'input', rule: 'jsDoc', fixed: undefined,
-                    message: 'Method access doesn\'t match'
+                    message: 'jsDoc: Method access doesn\'t match'
                 }, {
                     column: 3, line: 7, filename: 'input', rule: 'jsDoc', fixed: undefined,
-                    message: 'Method access doesn\'t match'
+                    message: 'jsDoc: Method access doesn\'t match'
                 }]
             }, {
                 it: 'should not report standard idendifiers',

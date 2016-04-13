@@ -47,8 +47,8 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     }
                 },
                 errors: {
-                    line: 2,
-                    column: 18
+                    line: 1,
+                    column: 0
                 }
             }, {
                 it: 'should report missing upper case letter followed by period',
@@ -61,8 +61,8 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     }
                 },
                 errors: {
-                    line: 2,
-                    column: 21
+                    line: 1,
+                    column: 0
                 }
             }, {
                 it: 'should report missing period at end of multi line description',
@@ -76,8 +76,8 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     }
                 },
                 errors: {
-                    line: 3,
-                    column: 30
+                    line: 1,
+                    column: 0
                 }
             }, {
                 it: 'should report missing period if upper case letter follows',
@@ -91,8 +91,8 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     }
                 },
                 errors: {
-                    line: 3,
-                    column: 3
+                    line: 1,
+                    column: 0
                 }
             }, {
                 it: 'should report missing upper case at beginning of description',
@@ -105,8 +105,8 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     }
                 },
                 errors: {
-                    line: 2,
-                    column: 3
+                    line: 1,
+                    column: 0
                 },
             }, {
                 it: 'should not report missing period or missing upper case letter',
@@ -160,8 +160,8 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                     }
                 },
                 errors: {
-                    line: 2,
-                    column: 18
+                    line: 1,
+                    column: 0
                 }
             }, {
                 it: 'should not report missing period',

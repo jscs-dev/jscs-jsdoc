@@ -63,10 +63,12 @@ describe('lib/rules/validate-jsdoc/disallow-newline-after-description', function
                      */
                     function fun(p) {}
                 },
-                errors: {
-                    line: 4,
-                    column: 3
-                },
+                errors: [
+                    {
+                        line: 4,
+                        column: 2
+                    }
+                ],
             }
             /* jshint ignore:end */
         ]);

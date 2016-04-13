@@ -10,7 +10,7 @@ describe('lib/rules/validate-jsdoc/check-annotations', function() {
             /* jshint ignore:start */
             {
                 it: 'should throw unavailable tag',
-                errors: {message: 'Unavailable tag ppublic'},
+                errors: {message: 'jsDoc: Unavailable tag ppublic'},
                 code: function() {
                     /**
                      * @ppublic
@@ -35,7 +35,7 @@ describe('lib/rules/validate-jsdoc/check-annotations', function() {
             },
             {
                 it: 'should throw @access without data',
-                errors: {message: 'Incomplete data in tag access'},
+                errors: {message: 'jsDoc: Incomplete data in tag access'},
                 code: function() {
                     /** @access */
                 }
@@ -68,7 +68,7 @@ describe('lib/rules/validate-jsdoc/check-annotations', function() {
             },
             {
                 it: 'should throw unavailable @arg',
-                errors: {message: 'Unavailable tag arg'},
+                errors: {message: 'jsDoc: Unavailable tag arg'},
                 code: function() {
                     /**
                      * @arg

@@ -105,7 +105,7 @@ describe('lib/rules/validate-jsdoc/check-redundant-access', function () {
                 },
                 errors: [{
                     line: 4, column: 9, filename: 'input', rule: 'jsDoc', fixed: undefined,
-                    message: 'Missing leading underscore for funcName'
+                    message: 'jsDoc: Missing leading underscore for funcName'
                 }]
             }, {
                 it: 'should not force unknown access',
@@ -155,7 +155,7 @@ describe('lib/rules/validate-jsdoc/check-redundant-access', function () {
                 },
                 errors: [{
                     line: 4, column: 9, filename: 'input', rule: 'jsDoc', fixed: undefined,
-                    message: 'Missing trailing underscore for funcName'
+                    message: 'jsDoc: Missing trailing underscore for funcName'
                 }]
             }
             /* jshint ignore:end */

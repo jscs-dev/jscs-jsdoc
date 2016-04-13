@@ -11,7 +11,7 @@ describe('jsdoc', function() {
         var c1;
 
         before(function() {
-            c1 = new Comment('/** @tag1 */', {start: {line: 1, column: 0}});
+            c1 = new Comment('/** @tag1 */', {});
         });
 
         it('should parses tag', function() {
@@ -26,9 +26,8 @@ describe('jsdoc', function() {
     describe('location', function() {
 
         it('should create valid location', function() {
-            var loc = new Location(4, 5);
-            expect(loc.line).to.eq(4);
-            expect(loc.column).to.eq(5);
+            var loc = new Location(4);
+            expect(loc.offset).to.eq(4);
         });
 
         it('should throws without params', function() {
@@ -38,17 +37,15 @@ describe('jsdoc', function() {
         });
 
         it('should shift location by line and column', function() {
-            var loc = new Location(1, 2);
-            var shifted = loc.shift(3, 4);
-            expect(shifted.line).to.eq(4);
-            expect(shifted.column).to.eq(6);
+            var loc = new Location(1);
+            var shifted = loc.shift(3);
+            expect(shifted.offset).to.eq(4);
         });
 
         it('should shift location by location', function() {
-            var loc = new Location(1, 2);
-            var shifted = loc.shift({line: 3, column: 4});
-            expect(shifted.line).to.eq(4);
-            expect(shifted.column).to.eq(6);
+            var loc = new Location(1);
+            var shifted = loc.shift({offset: 3});
+            expect(shifted.offset).to.eq(4);
         });
 
     });
@@ -59,23 +56,20 @@ describe('jsdoc', function() {
         var nullie;
 
         before(function() {
-            bool1 = new Type('boolean', new Location(3, 4));
-            varnum = new Type('...number', new Location(10, 20));
-            nullie = new Type('Null|null', new Location(2, 5));
+            bool1 = new Type('boolean', new Location(3));
+            varnum = new Type('...number', new Location(10));
+            nullie = new Type('Null|null', new Location(2));
         });
 
         it('should store data', function() {
             expect(bool1.value).to.eq('boolean');
-            expect(bool1.loc.line).to.eq(3);
-            expect(bool1.loc.column).to.eq(4);
+            expect(bool1.loc.offset).to.eq(3);
             expect(varnum.variable).to.eq(true);
-            expect(varnum.loc.line).to.eq(10);
-            expect(varnum.loc.column).to.eq(23);
+            expect(varnum.loc.offset).to.eq(13);
         });
 
         it('should match types', function() {
-            expect(bool1.match({type: 'Literal', value: true})).to.eq(true);
-            expect(bool1.match({type: 'Literal', value: null})).to.eq(false);
+            expect(bool1.match({type: 'BooleanLiteral', value: true})).to.eq(true);
         });
 
         it('should parse null', function() {
@@ -102,18 +96,16 @@ describe('jsdoc', function() {
                 type: 'Number',
                 name: 'age',
                 description: 'User`s age'
-            }, new Location(10, 20));
+            }, new Location(10));
 
             expect(age.name).to.be.an('object');
             expect(age.name.loc).to.be.an.instanceof(Location);
-            expect(age.name.loc.line).to.eq(10);
-            expect(age.name.loc.column).to.eq(36);
+            expect(age.name.loc.offset).to.eq(26);
 
             expect(age.type).to.be.an.instanceof(Type);
             expect(age.type.value).to.eq('Number');
             expect(age.type.loc).to.be.an.instanceof(Location);
-            expect(age.type.loc.line).to.eq(10);
-            expect(age.type.loc.column).to.eq(28);
+            expect(age.type.loc.offset).to.eq(18);
             expect(age.type.match({type: 'Literal', value: 4})).to.eq(true);
         });
 
@@ -135,7 +127,7 @@ describe('jsdoc', function() {
                 ' * @example\n' +
                 ' * // use this anywhere\n' +
                 ' * makeFun(value, some);\n' +
-                ' */', {start: {line: 5, column: 2}});
+                ' */', {});
         });
 
         it('should parses comment and create all tags and types', function() {
@@ -144,21 +136,21 @@ describe('jsdoc', function() {
 
             var tag1 = c1.tags[0];
             expect(tag1.id).to.eq('tag1');
-            expect(tag1.loc).to.eql(new Location(9, 5));
+            expect(tag1.loc).to.eql(new Location(46));
             expect(tag1.name.value).to.eq('value');
-            expect(tag1.name.loc).to.eql(new Location(9, 11));
+            expect(tag1.name.loc).to.eql(new Location(52));
 
             var param = c1.tags[1];
             expect(param.id).to.eq('param');
-            expect(param.loc).to.eql(new Location(10, 5));
+            expect(param.loc).to.eql(new Location(61));
             expect(param.type.value).to.eq('Type');
-            expect(param.type.loc).to.eql(new Location(10, 13));
+            expect(param.type.loc).to.eql(new Location(69));
             expect(param.name.value).to.eq('some');
-            expect(param.name.loc).to.eql(new Location(10, 19));
+            expect(param.name.loc).to.eql(new Location(75));
 
             var abs = c1.tags[2];
             expect(abs.id).to.eq('abstract');
-            expect(abs.loc).to.eql(new Location(12, 5));
+            expect(abs.loc).to.eql(new Location(114));
 
             var example = c1.tags[3];
             expect(example.id).to.eq('example');

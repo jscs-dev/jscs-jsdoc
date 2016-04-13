@@ -37,7 +37,7 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 5, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },
@@ -54,9 +54,9 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Parameter aaa is out of order',
+                      {message: 'jsDoc: Parameter aaa is out of order',
                           line: 4, column: 23, filename: 'input', fixed: undefined, rule: 'jsDoc' },
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 6, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },
@@ -73,7 +73,7 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `aaa`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `aaa`.',
                           line: 6, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             }
@@ -100,7 +100,7 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 5, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },
@@ -116,7 +116,7 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 5, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },
@@ -132,7 +132,7 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 5, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },
@@ -149,7 +149,7 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 6, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },
@@ -167,9 +167,9 @@ describe('lib/rules/validate-jsdoc/check-param-existence', function() {
                       };
                   },
                   errors: [
-                      {message: 'Function is missing documentation for parameter `zzz`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `zzz`.',
                           line: 7, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' },
-                      {message: 'Function is missing documentation for parameter `ggg`.',
+                      {message: 'jsDoc: Function is missing documentation for parameter `ggg`.',
                           line: 7, column: 9, filename: 'input', fixed: undefined, rule: 'jsDoc' }
                   ]
             },

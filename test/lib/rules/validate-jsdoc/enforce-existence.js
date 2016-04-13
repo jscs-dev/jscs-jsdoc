@@ -148,7 +148,7 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
     });
 
     describe('with true and esnext', function() {
-        checker.rules({enforceExistence: true}, {esnext: true});
+        checker.rules({enforceExistence: true});
 
         checker.cases([
             /* jshint ignore:start */
@@ -189,7 +189,7 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
     });
 
     describe('with allExcept arrows and esnext', function() {
-        checker.rules({enforceExistence: {allExcept: ['arrow']}}, {esnext: true});
+        checker.rules({enforceExistence: {allExcept: ['arrow']}});
 
         checker.cases([
             /* jshint ignore:start */
@@ -221,7 +221,7 @@ describe('lib/rules/validate-jsdoc/enforce-existence', function () {
     });
 
     describe('with exceptExports and esnext', function() {
-        checker.rules({enforceExistence: 'exceptExports'}, {esnext: true});
+        checker.rules({enforceExistence: 'exceptExports'});
 
         checker.cases([
             /* jshint ignore:start */
