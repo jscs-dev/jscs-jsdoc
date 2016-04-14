@@ -29,7 +29,7 @@
   "devDependencies": {
     "chai": "^2.3.0",
     "chai-subset": "^1.1.0",
-    "jscs": "^2.1.1",
+    "jscs": "git://github.com/jscs-dev/node-jscs.git#master",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4"
   },
