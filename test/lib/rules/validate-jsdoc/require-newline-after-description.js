@@ -53,8 +53,8 @@ describe('lib/rules/validate-jsdoc/require-newline-after-description', function 
                     }
                 },
                 errors: {
-                    line: 1,
-                    column: 0
+                    line: 2,
+                    column: 13
                 },
             }, {
                 it: 'should not report newline after description',
