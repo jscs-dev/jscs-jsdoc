@@ -7,6 +7,7 @@ node_js:
   - "0.12"
   - "v4"
   - "v5"
+  - "v6"
 
 matrix:
   fast_finish: true
@@ -18,7 +19,7 @@ before_install:
   - npm --version
 
 before_script:
-  # v5 don't need that symlink for some reason (npm3?)
+  # v5 and v6 don't need that symlink for some reason (npm3?)
   - |
       [ -d ./node_modules/jscs-jsdoc ] || ln -s ../ ./node_modules/jscs-jsdoc
 
