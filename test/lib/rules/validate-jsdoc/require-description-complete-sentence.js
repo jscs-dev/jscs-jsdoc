@@ -148,6 +148,33 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                 },
                 errors: 1
             }, {
+                it: 'should not report because of strings between backtick',
+                code: function () {
+                    /**
+                     * Some `fo.o` and some `b.ar`. Also some `ba.r` and some `.foo`.
+                     */
+                    function fun(p) {}
+                },
+                errors: 0
+            }, {
+                it: 'should not report because of strings between single quotes',
+                code: function () {
+                    /**
+                     * Some 'fo.o' and some 'b.ar'. Also some 'ba.r' and some '.foo'.
+                     */
+                    function fun(p) {}
+                },
+                errors: 0
+            }, {
+                it: 'should not report because of strings between double quotes',
+                code: function () {
+                    /**
+                     * Some "fo.o" and some "b.ar". Also some "ba.r" and some ".foo".
+                     */
+                    function fun(p) {}
+                },
+                errors: 0
+            }, {
                 it: 'should report missing period at end of first line',
                 code: function () {
                     /**
@@ -229,6 +256,20 @@ describe('lib/rules/validate-jsdoc/require-description-complete-sentence', funct
                      * - Zot
                      * - Qux
                      * - zot
+                     */
+                    function quux() {}
+                }
+            }, {
+                it: 'should not report correct sentences formatted as (complex) lists',
+                code: function () {
+                    /**
+                     * To become a `Foo.Bar`, `element` has to:
+                     *
+                     *  - be an `HTMLElement`
+                     *  - have an `options` property
+                     *  - have `foo` and `bar` properties in its `options` object
+                     *  - not have a foo (`.bar`) as source, or if it does:
+                     *    - have `options.foo` set to `true`
                      */
                     function quux() {}
                 }
