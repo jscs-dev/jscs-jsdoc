@@ -31,6 +31,14 @@ after_success:
         istanbul-coveralls && echo "Coverage data was sent to coveralls!"
       fi
 
+after_success:
+  - |
+      if [ "${TRAVIS_NODE_VERSION}" == "0.10" ]; then
+        npm i istanbul istanbul-coveralls
+        istanbul cover --report lcovonly ./node_modules/.bin/_mocha
+        istanbul-coveralls && echo "Coverage data was sent to coveralls!"
+      fi
+
 notifications:
   webhooks:
     urls:
